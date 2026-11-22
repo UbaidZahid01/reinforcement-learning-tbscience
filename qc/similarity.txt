@@ -1,0 +1,8 @@
+Max similarity: 56% with 'local/engineering-sciences\electrical-engineering\navigation-sensor-calibration' (threshold: 80%)
+Similarity check passed
+Top-5 most similar public tasks:
+   56.8%  tasks\engineering-sciences\electrical-engineering\navigation-sensor-calibration
+   17.6%  tasks\life-sciences\neuroscience\eeg-erp-recovery
+   15.3%  tasks\engineering-sciences\electrical-engineering\nearfield-antenna-reduction
+   15.1%  tasks\physical-sciences\astronomy\cmb-cross-inference
+   13.3%  tasks\life-sciences\medicine\bloodculture-gram-call

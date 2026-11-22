@@ -1,0 +1,80 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 5,
+            "passed": 5,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1795386182.3730662,
+            "stop": 1795386374.6641467
+        },
+        "tests": [
+            {
+                "name": "test_state.py::test_solution_format",
+                "status": "passed",
+                "duration": 47.20614032499907,
+                "start": 1795386183.114007,
+                "stop": 1795386230.3171499,
+                "retries": 3,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::name::['alder', 'basalt', 'cedar', 'dune']"
+                ]
+            },
+            {
+                "name": "test_state.py::test_fix_rate",
+                "status": "passed",
+                "duration": 0.008249470000009751,
+                "start": 1795386374.5586557,
+                "stop": 1795386374.567719,
+                "retries": 3,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::name::['alder', 'basalt', 'cedar', 'dune']"
+                ]
+            },
+            {
+                "name": "test_state.py::test_fixed_integrity",
+                "status": "passed",
+                "duration": 0.0023705709991190815,
+                "start": 1795386374.5875933,
+                "stop": 1795386374.5906124,
+                "retries": 3,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::name::['alder', 'basalt', 'cedar', 'dune']"
+                ]
+            },
+            {
+                "name": "test_state.py::test_fixed_precision",
+                "status": "passed",
+                "duration": 0.0021514500012926874,
+                "start": 1795386374.611546,
+                "stop": 1795386374.614399,
+                "retries": 3,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::name::['alder', 'basalt', 'cedar', 'dune']"
+                ]
+            },
+            {
+                "name": "test_state.py::test_overall_accuracy",
+                "status": "passed",
+                "duration": 0.0016928349987210822,
+                "start": 1795386374.63095,
+                "stop": 1795386374.6334908,
+                "retries": 3,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::name::['alder', 'basalt', 'cedar', 'dune']"
+                ]
+            }
+        ]
+    }
+}

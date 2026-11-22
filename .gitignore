@@ -1,0 +1,10 @@
+jobs/
+__pycache__/
+*.pyc
+.env
+*.env
+# upstream TB-Science CI tooling copied locally only to run the checks
+ci_checks/
+tools/
+.github/
+task-readme-template.md
