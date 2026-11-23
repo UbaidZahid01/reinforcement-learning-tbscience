@@ -1,0 +1,15 @@
+{
+  "status": "qualitative_only",
+  "numeric_similarity": null,
+  "reference_repository_checkout_available": false,
+  "references": [
+    "mendota-ice-phenology",
+    "cilia-segmentation",
+    "si-fracture-fbc"
+  ],
+  "text_comparison": "not_run",
+  "code_comparison": "not_run",
+  "data_comparison": "not_run",
+  "manual_conceptual_review": "No scientific problem, dataset, or distinctive solution algorithm is shared with the accessible descriptions of the three reference tasks. Standard algebraic-topology terminology is shared only as domain vocabulary.",
+  "reason": "Full reference files and repository checkout are absent from the writable workspace."
+}
