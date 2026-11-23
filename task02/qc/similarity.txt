@@ -1,0 +1,2 @@
+Max similarity: 31% with 'local/engineering-sciences\electrical-engineering\navigation-sensor-calibration' (threshold: 80%)
+Similarity check passed

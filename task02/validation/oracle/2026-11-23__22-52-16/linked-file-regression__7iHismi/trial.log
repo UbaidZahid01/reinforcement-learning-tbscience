@@ -1,0 +1,4 @@
+Skipping image OS validation for hb__a8102d424c389d0d5039fabb767fe046: docker inspect returned 1
+Collecting main service artifacts
+Skipping image OS validation for hb__dba253d5981f5f9dd094e5ef8e6800b9: docker inspect returned 1
+Trial linked-file-regression__7iHismi failed: Verifier execution timed out after 6000.0 seconds

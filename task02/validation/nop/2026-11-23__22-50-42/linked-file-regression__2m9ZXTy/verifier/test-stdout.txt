@@ -1,0 +1,316 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.16, pytest-8.4.1, pluggy-1.7.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 13 items
+
+test_state.py FFFFFFFFFFFFF                                              [100%]
+
+=================================== FAILURES ===================================
+______________________________ test_outputs_valid ______________________________
+
+    def test_outputs_valid():
+        """Every dataset yields, in time, an estimates.csv with the documented schema and ordered finite intervals."""
+>       _require_valid()
+
+test_state.py:209: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _require_valid():
+        bad = [m for v, m in results().values() if v is None]
+>       assert not bad, f"{len(bad)} datasets without valid output, e.g. {bad[0]}"
+E       AssertionError: 120 datasets without valid output, e.g. /root/results/solver.py missing or not a regular file
+E       assert not ['/root/results/solver.py missing or not a regular file', '/root/results/solver.py missing or not a regular file', 'no... not a regular file', 'not run; an earlier dataset failed: /root/results/solver.py missing or not a regular file', ...]
+
+test_state.py:196: AssertionError
+_______________________________ test_accuracy[0] _______________________________
+
+group = 0
+
+    @pytest.mark.parametrize("group", GROUPS)
+    def test_accuracy(group):
+        """Coefficient RMSE in the group is at most the documented multiple of that of regression on the true links."""
+>       assert graded(group)["rmse"] <= MAX_RMSE_RATIO
+               ^^^^^^^^^^^^^
+
+test_state.py:215: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+test_state.py:201: in graded
+    _require_valid()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _require_valid():
+        bad = [m for v, m in results().values() if v is None]
+>       assert not bad, f"{len(bad)} datasets without valid output, e.g. {bad[0]}"
+E       AssertionError: 120 datasets without valid output, e.g. /root/results/solver.py missing or not a regular file
+E       assert not ['/root/results/solver.py missing or not a regular file', '/root/results/solver.py missing or not a regular file', 'no... not a regular file', 'not run; an earlier dataset failed: /root/results/solver.py missing or not a regular file', ...]
+
+test_state.py:196: AssertionError
+_______________________________ test_accuracy[1] _______________________________
+
+group = 1
+
+    @pytest.mark.parametrize("group", GROUPS)
+    def test_accuracy(group):
+        """Coefficient RMSE in the group is at most the documented multiple of that of regression on the true links."""
+>       assert graded(group)["rmse"] <= MAX_RMSE_RATIO
+               ^^^^^^^^^^^^^
+
+test_state.py:215: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+test_state.py:201: in graded
+    _require_valid()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _require_valid():
+        bad = [m for v, m in results().values() if v is None]
+>       assert not bad, f"{len(bad)} datasets without valid output, e.g. {bad[0]}"
+E       AssertionError: 120 datasets without valid output, e.g. /root/results/solver.py missing or not a regular file
+E       assert not ['/root/results/solver.py missing or not a regular file', '/root/results/solver.py missing or not a regular file', 'no... not a regular file', 'not run; an earlier dataset failed: /root/results/solver.py missing or not a regular file', ...]
+
+test_state.py:196: AssertionError
+_______________________________ test_accuracy[2] _______________________________
+
+group = 2
+
+    @pytest.mark.parametrize("group", GROUPS)
+    def test_accuracy(group):
+        """Coefficient RMSE in the group is at most the documented multiple of that of regression on the true links."""
+>       assert graded(group)["rmse"] <= MAX_RMSE_RATIO
+               ^^^^^^^^^^^^^
+
+test_state.py:215: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+test_state.py:201: in graded
+    _require_valid()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _require_valid():
+        bad = [m for v, m in results().values() if v is None]
+>       assert not bad, f"{len(bad)} datasets without valid output, e.g. {bad[0]}"
+E       AssertionError: 120 datasets without valid output, e.g. /root/results/solver.py missing or not a regular file
+E       assert not ['/root/results/solver.py missing or not a regular file', '/root/results/solver.py missing or not a regular file', 'no... not a regular file', 'not run; an earlier dataset failed: /root/results/solver.py missing or not a regular file', ...]
+
+test_state.py:196: AssertionError
+_______________________________ test_accuracy[3] _______________________________
+
+group = 3
+
+    @pytest.mark.parametrize("group", GROUPS)
+    def test_accuracy(group):
+        """Coefficient RMSE in the group is at most the documented multiple of that of regression on the true links."""
+>       assert graded(group)["rmse"] <= MAX_RMSE_RATIO
+               ^^^^^^^^^^^^^
+
+test_state.py:215: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+test_state.py:201: in graded
+    _require_valid()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _require_valid():
+        bad = [m for v, m in results().values() if v is None]
+>       assert not bad, f"{len(bad)} datasets without valid output, e.g. {bad[0]}"
+E       AssertionError: 120 datasets without valid output, e.g. /root/results/solver.py missing or not a regular file
+E       assert not ['/root/results/solver.py missing or not a regular file', '/root/results/solver.py missing or not a regular file', 'no... not a regular file', 'not run; an earlier dataset failed: /root/results/solver.py missing or not a regular file', ...]
+
+test_state.py:196: AssertionError
+_______________________________ test_coverage[0] _______________________________
+
+group = 0
+
+    @pytest.mark.parametrize("group", GROUPS)
+    def test_coverage(group):
+        """Reported 95% intervals cover the true coefficients at least at the documented rate in the group."""
+>       assert graded(group)["coverage"] >= MIN_COVERAGE
+               ^^^^^^^^^^^^^
+
+test_state.py:221: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+test_state.py:201: in graded
+    _require_valid()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _require_valid():
+        bad = [m for v, m in results().values() if v is None]
+>       assert not bad, f"{len(bad)} datasets without valid output, e.g. {bad[0]}"
+E       AssertionError: 120 datasets without valid output, e.g. /root/results/solver.py missing or not a regular file
+E       assert not ['/root/results/solver.py missing or not a regular file', '/root/results/solver.py missing or not a regular file', 'no... not a regular file', 'not run; an earlier dataset failed: /root/results/solver.py missing or not a regular file', ...]
+
+test_state.py:196: AssertionError
+_______________________________ test_coverage[1] _______________________________
+
+group = 1
+
+    @pytest.mark.parametrize("group", GROUPS)
+    def test_coverage(group):
+        """Reported 95% intervals cover the true coefficients at least at the documented rate in the group."""
+>       assert graded(group)["coverage"] >= MIN_COVERAGE
+               ^^^^^^^^^^^^^
+
+test_state.py:221: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+test_state.py:201: in graded
+    _require_valid()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _require_valid():
+        bad = [m for v, m in results().values() if v is None]
+>       assert not bad, f"{len(bad)} datasets without valid output, e.g. {bad[0]}"
+E       AssertionError: 120 datasets without valid output, e.g. /root/results/solver.py missing or not a regular file
+E       assert not ['/root/results/solver.py missing or not a regular file', '/root/results/solver.py missing or not a regular file', 'no... not a regular file', 'not run; an earlier dataset failed: /root/results/solver.py missing or not a regular file', ...]
+
+test_state.py:196: AssertionError
+_______________________________ test_coverage[2] _______________________________
+
+group = 2
+
+    @pytest.mark.parametrize("group", GROUPS)
+    def test_coverage(group):
+        """Reported 95% intervals cover the true coefficients at least at the documented rate in the group."""
+>       assert graded(group)["coverage"] >= MIN_COVERAGE
+               ^^^^^^^^^^^^^
+
+test_state.py:221: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+test_state.py:201: in graded
+    _require_valid()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _require_valid():
+        bad = [m for v, m in results().values() if v is None]
+>       assert not bad, f"{len(bad)} datasets without valid output, e.g. {bad[0]}"
+E       AssertionError: 120 datasets without valid output, e.g. /root/results/solver.py missing or not a regular file
+E       assert not ['/root/results/solver.py missing or not a regular file', '/root/results/solver.py missing or not a regular file', 'no... not a regular file', 'not run; an earlier dataset failed: /root/results/solver.py missing or not a regular file', ...]
+
+test_state.py:196: AssertionError
+_______________________________ test_coverage[3] _______________________________
+
+group = 3
+
+    @pytest.mark.parametrize("group", GROUPS)
+    def test_coverage(group):
+        """Reported 95% intervals cover the true coefficients at least at the documented rate in the group."""
+>       assert graded(group)["coverage"] >= MIN_COVERAGE
+               ^^^^^^^^^^^^^
+
+test_state.py:221: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+test_state.py:201: in graded
+    _require_valid()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _require_valid():
+        bad = [m for v, m in results().values() if v is None]
+>       assert not bad, f"{len(bad)} datasets without valid output, e.g. {bad[0]}"
+E       AssertionError: 120 datasets without valid output, e.g. /root/results/solver.py missing or not a regular file
+E       assert not ['/root/results/solver.py missing or not a regular file', '/root/results/solver.py missing or not a regular file', 'no... not a regular file', 'not run; an earlier dataset failed: /root/results/solver.py missing or not a regular file', ...]
+
+test_state.py:196: AssertionError
+________________________________ test_width[0] _________________________________
+
+group = 0
+
+    @pytest.mark.parametrize("group", GROUPS)
+    def test_width(group):
+        """Median interval width in the group is at most the documented multiple of that of regression on the true links."""
+>       assert graded(group)["width"] <= MAX_WIDTH_RATIO
+               ^^^^^^^^^^^^^
+
+test_state.py:227: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+test_state.py:201: in graded
+    _require_valid()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _require_valid():
+        bad = [m for v, m in results().values() if v is None]
+>       assert not bad, f"{len(bad)} datasets without valid output, e.g. {bad[0]}"
+E       AssertionError: 120 datasets without valid output, e.g. /root/results/solver.py missing or not a regular file
+E       assert not ['/root/results/solver.py missing or not a regular file', '/root/results/solver.py missing or not a regular file', 'no... not a regular file', 'not run; an earlier dataset failed: /root/results/solver.py missing or not a regular file', ...]
+
+test_state.py:196: AssertionError
+________________________________ test_width[1] _________________________________
+
+group = 1
+
+    @pytest.mark.parametrize("group", GROUPS)
+    def test_width(group):
+        """Median interval width in the group is at most the documented multiple of that of regression on the true links."""
+>       assert graded(group)["width"] <= MAX_WIDTH_RATIO
+               ^^^^^^^^^^^^^
+
+test_state.py:227: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+test_state.py:201: in graded
+    _require_valid()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _require_valid():
+        bad = [m for v, m in results().values() if v is None]
+>       assert not bad, f"{len(bad)} datasets without valid output, e.g. {bad[0]}"
+E       AssertionError: 120 datasets without valid output, e.g. /root/results/solver.py missing or not a regular file
+E       assert not ['/root/results/solver.py missing or not a regular file', '/root/results/solver.py missing or not a regular file', 'no... not a regular file', 'not run; an earlier dataset failed: /root/results/solver.py missing or not a regular file', ...]
+
+test_state.py:196: AssertionError
+________________________________ test_width[2] _________________________________
+
+group = 2
+
+    @pytest.mark.parametrize("group", GROUPS)
+    def test_width(group):
+        """Median interval width in the group is at most the documented multiple of that of regression on the true links."""
+>       assert graded(group)["width"] <= MAX_WIDTH_RATIO
+               ^^^^^^^^^^^^^
+
+test_state.py:227: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+test_state.py:201: in graded
+    _require_valid()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _require_valid():
+        bad = [m for v, m in results().values() if v is None]
+>       assert not bad, f"{len(bad)} datasets without valid output, e.g. {bad[0]}"
+E       AssertionError: 120 datasets without valid output, e.g. /root/results/solver.py missing or not a regular file
+E       assert not ['/root/results/solver.py missing or not a regular file', '/root/results/solver.py missing or not a regular file', 'no... not a regular file', 'not run; an earlier dataset failed: /root/results/solver.py missing or not a regular file', ...]
+
+test_state.py:196: AssertionError
+________________________________ test_width[3] _________________________________
+
+group = 3
+
+    @pytest.mark.parametrize("group", GROUPS)
+    def test_width(group):
+        """Median interval width in the group is at most the documented multiple of that of regression on the true links."""
+>       assert graded(group)["width"] <= MAX_WIDTH_RATIO
+               ^^^^^^^^^^^^^
+
+test_state.py:227: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+test_state.py:201: in graded
+    _require_valid()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _require_valid():
+        bad = [m for v, m in results().values() if v is None]
+>       assert not bad, f"{len(bad)} datasets without valid output, e.g. {bad[0]}"
+E       AssertionError: 120 datasets without valid output, e.g. /root/results/solver.py missing or not a regular file
+E       assert not ['/root/results/solver.py missing or not a regular file', '/root/results/solver.py missing or not a regular file', 'no... not a regular file', 'not run; an earlier dataset failed: /root/results/solver.py missing or not a regular file', ...]
+
+test_state.py:196: AssertionError
+=========================== short test summary info ============================
+FAILED test_state.py::test_outputs_valid - AssertionError: 120 datasets witho...
+FAILED test_state.py::test_accuracy[0] - AssertionError: 120 datasets without...
+FAILED test_state.py::test_accuracy[1] - AssertionError: 120 datasets without...
+FAILED test_state.py::test_accuracy[2] - AssertionError: 120 datasets without...
+FAILED test_state.py::test_accuracy[3] - AssertionError: 120 datasets without...
+FAILED test_state.py::test_coverage[0] - AssertionError: 120 datasets without...
+FAILED test_state.py::test_coverage[1] - AssertionError: 120 datasets without...
+FAILED test_state.py::test_coverage[2] - AssertionError: 120 datasets without...
+FAILED test_state.py::test_coverage[3] - AssertionError: 120 datasets without...
+FAILED test_state.py::test_width[0] - AssertionError: 120 datasets without va...
+FAILED test_state.py::test_width[1] - AssertionError: 120 datasets without va...
+FAILED test_state.py::test_width[2] - AssertionError: 120 datasets without va...
+FAILED test_state.py::test_width[3] - AssertionError: 120 datasets without va...
+============================== 13 failed in 2.01s ==============================
