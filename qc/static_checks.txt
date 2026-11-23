@@ -1,32 +1,32 @@
-[0] check-allow-internet.sh :: 
-[0] check-binary-reward.sh :: 
-[0] check-canary.sh :: 
-[0] check-compose-host-binds.sh :: 
-[0] check-dockerfile-platform.sh :: 
-[0] check-dockerfile-references.sh :: 
-[0] check-dockerfile-sanity.sh :: 
-[0] check-gpu-types.sh :: 
-[0] check-instruction-suffix.sh :: 
-[0] check-nproc.sh :: 
-[0] check-pip-pinning.sh :: 
-[0] check-pytest-version.sh :: 
-[0] check-separate-verifier.sh :: 
-[1] check-task-absolute-path.sh :: FAIL tasks/earth-sciences/geosciences/medium-baseline-rtk/instruction.md: relative paths used (should be absolute under /root): OUTPUT_DIR/solution.csv 
-[1] check-task-fields.sh :: FAIL tasks/earth-sciences/geosciences/medium-baseline-rtk/task.toml: [metadata].author_profile is present but empty; fill it in (see task-template.toml) 
-[1] check-task-path.sh :: FAIL tasks/earth-sciences/geosciences/medium-baseline-rtk: couldn't locate .github/reviewer-pool.yml 
-[0] check-task-readme.sh :: 
-[0] check-task-resources.sh :: 
-[0] check-task-slug.sh :: 
-[0] check-task-structure.sh :: 
-[0] check-task-timeout.sh :: 
-[0] check-test-file-references.sh :: 
-[0] check-test-sh-sanity.sh :: 
-[0] check-trial-network-fetch.sh :: 
-[0] check-verifier-resources.sh :: 
-[0] check-verifier-tooling-baked.sh :: 
-[2] check-ai-detection.py :: GPTZERO_API_KEY not set, skipping AI detection 
-[0] check-binary-reward.py ::  
-[1] check-rubric-consistency.py :: FAIL missing file: tasks\earth-sciences\geosciences\medium-baseline-rtk 
-[0] check-similarity.py :: No reference tasks found, skipping similarity check 
-[1] check-task-proposal-link.py :: FAIL: REPO env var required (owner/name) 
-[1] check-verifier-output.py :: FAIL no trial output found under tasks/earth-sciences/geosciences/medium-baseline-rtk 
+[0] check-allow-internet.sh
+[0] check-binary-reward.sh
+[0] check-canary.sh
+[0] check-compose-host-binds.sh
+[0] check-dockerfile-platform.sh
+[0] check-dockerfile-references.sh
+[0] check-dockerfile-sanity.sh
+[0] check-gpu-types.sh
+[0] check-instruction-suffix.sh
+[0] check-nproc.sh
+[0] check-pip-pinning.sh
+[0] check-pytest-version.sh
+[0] check-separate-verifier.sh
+[0] check-task-absolute-path.sh
+[0] check-task-fields.sh
+[0] check-task-path.sh
+[1] check-task-readme.sh
+[0] check-task-resources.sh
+[0] check-task-slug.sh
+[0] check-task-structure.sh
+[0] check-task-timeout.sh
+[0] check-test-file-references.sh
+[0] check-test-sh-sanity.sh
+[0] check-trial-network-fetch.sh
+[0] check-verifier-resources.sh
+[0] check-verifier-tooling-baked.sh
+[0] check-binary-reward.py
+[0] check-similarity.py
+[0] check-verifier-output.py (validation/oracle)
+[0] check-verifier-output.py (validation/nop)
+[skip] check-ai-detection.py (needs GPTZERO_API_KEY)
+[skip] check-task-proposal-link.py (needs PR body with approved proposal)
