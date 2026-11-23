@@ -14,7 +14,7 @@
 [0] check-task-absolute-path.sh
 [0] check-task-fields.sh
 [0] check-task-path.sh
-[1] check-task-readme.sh
+[0] check-task-readme.sh
 [0] check-task-resources.sh
 [0] check-task-slug.sh
 [0] check-task-structure.sh

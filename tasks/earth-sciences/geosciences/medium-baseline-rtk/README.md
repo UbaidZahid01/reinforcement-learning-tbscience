@@ -8,6 +8,7 @@ Build a reusable dual-frequency GPS kinematic RTK solver that resolves carrier-p
 | | |
 |---|---|
 | **Author** | Your Name (Independent Researcher) — your@email.com |
+| **Profile** | TODO: author Google Scholar, LinkedIn or personal page URL |
 | **Domain** | earth-sciences / geosciences / geodesy |
 | **Tags** | `gnss` `rtk` `carrier-phase` `integer-ambiguity-resolution` `geodesy` |
 | **Expert time estimate** | 16 hours |
