@@ -2,20 +2,35 @@
     "schema_version": 1,
     "id": "5bbafadf-3b08-43b1-ad6a-bbc29cc0df76",
     "started_at": "2026-11-23T03:20:36.725134",
-    "updated_at": "2026-11-22T22:20:40.612208Z",
-    "finished_at": null,
+    "updated_at": "2026-11-23T03:41:30.286046",
+    "finished_at": "2026-11-23T03:41:30.286046",
     "n_total_trials": 3,
     "stats": {
-        "n_completed_trials": 0,
-        "n_errored_trials": 0,
-        "n_running_trials": 1,
-        "n_pending_trials": 2,
+        "n_completed_trials": 3,
+        "n_errored_trials": 3,
+        "n_running_trials": 0,
+        "n_pending_trials": 0,
         "n_cancelled_trials": 0,
         "n_retries": 0,
-        "evals": {},
-        "n_input_tokens": null,
-        "n_cache_tokens": null,
-        "n_output_tokens": null,
-        "cost_usd": null
+        "evals": {
+            "terminus-2__gemini-2.5-flash__adhoc": {
+                "n_trials": 0,
+                "n_errors": 3,
+                "metrics": [],
+                "pass_at_k": {},
+                "reward_stats": {},
+                "exception_stats": {
+                    "RateLimitError": [
+                        "medium-baseline-rtk__Bx7EFHD",
+                        "medium-baseline-rtk__kixxmbc",
+                        "medium-baseline-rtk__VbSMoEy"
+                    ]
+                }
+            }
+        },
+        "n_input_tokens": 892441,
+        "n_cache_tokens": 779663,
+        "n_output_tokens": 106885,
+        "cost_usd": 0.32443579
     }
 }

@@ -8,3 +8,4 @@ ci_checks/
 tools/
 .github/
 task-readme-template.md
+.icod/

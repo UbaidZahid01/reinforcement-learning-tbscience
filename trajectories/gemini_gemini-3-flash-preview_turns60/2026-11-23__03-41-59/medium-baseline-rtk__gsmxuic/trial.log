@@ -1,0 +1,43 @@
+max_turns (f.k.a. max_episodes) artificially limited to 60. Consider removing this limit for better task completion.
+Skipping image OS validation for hb__7604d3dc4dfa9c4357294f2092dcff08: docker inspect returned 1
+Parser warnings: - Extra text detected before JSON object
+- Extra text detected after JSON object
+Trajectory dumped to trajectories\gemini_gemini-3-flash-preview_turns60\2026-11-23__03-41-59\medium-baseline-rtk__gsmxuic\agent\trajectory.json
+Parser warnings: - Extra text detected before JSON object
+- Extra text detected after JSON object
+Trajectory dumped to trajectories\gemini_gemini-3-flash-preview_turns60\2026-11-23__03-41-59\medium-baseline-rtk__gsmxuic\agent\trajectory.json
+Parser warnings: - Extra text detected before JSON object
+- Extra text detected after JSON object
+Trajectory dumped to trajectories\gemini_gemini-3-flash-preview_turns60\2026-11-23__03-41-59\medium-baseline-rtk__gsmxuic\agent\trajectory.json
+Parser warnings: - Extra text detected before JSON object
+- Extra text detected after JSON object
+Trajectory dumped to trajectories\gemini_gemini-3-flash-preview_turns60\2026-11-23__03-41-59\medium-baseline-rtk__gsmxuic\agent\trajectory.json
+Parser warnings: - Extra text detected before JSON object
+- Extra text detected after JSON object
+Trajectory dumped to trajectories\gemini_gemini-3-flash-preview_turns60\2026-11-23__03-41-59\medium-baseline-rtk__gsmxuic\agent\trajectory.json
+Parser warnings: - Extra text detected before JSON object
+- Extra text detected after JSON object
+Trajectory dumped to trajectories\gemini_gemini-3-flash-preview_turns60\2026-11-23__03-41-59\medium-baseline-rtk__gsmxuic\agent\trajectory.json
+Parser warnings: - Extra text detected before JSON object
+- Extra text detected after JSON object
+Trajectory dumped to trajectories\gemini_gemini-3-flash-preview_turns60\2026-11-23__03-41-59\medium-baseline-rtk__gsmxuic\agent\trajectory.json
+Parser warnings: - Extra text detected before JSON object
+- Extra text detected after JSON object
+Trajectory dumped to trajectories\gemini_gemini-3-flash-preview_turns60\2026-11-23__03-41-59\medium-baseline-rtk__gsmxuic\agent\trajectory.json
+Parser warnings: - Extra text detected before JSON object
+- Extra text detected after JSON object
+Trajectory dumped to trajectories\gemini_gemini-3-flash-preview_turns60\2026-11-23__03-41-59\medium-baseline-rtk__gsmxuic\agent\trajectory.json
+Parser warnings: - Extra text detected before JSON object
+- Extra text detected after JSON object
+- Command 1 should end with newline when followed by another command. Otherwise the two commands will be concatenated together on the same line.
+Trajectory dumped to trajectories\gemini_gemini-3-flash-preview_turns60\2026-11-23__03-41-59\medium-baseline-rtk__gsmxuic\agent\trajectory.json
+Parser warnings: - Extra text detected before JSON object
+- Extra text detected after JSON object
+Trajectory dumped to trajectories\gemini_gemini-3-flash-preview_turns60\2026-11-23__03-41-59\medium-baseline-rtk__gsmxuic\agent\trajectory.json
+Parser warnings: - Extra text detected before JSON object
+- Extra text detected after JSON object
+Trajectory dumped to trajectories\gemini_gemini-3-flash-preview_turns60\2026-11-23__03-41-59\medium-baseline-rtk__gsmxuic\agent\trajectory.json
+Trajectory dumped to trajectories\gemini_gemini-3-flash-preview_turns60\2026-11-23__03-41-59\medium-baseline-rtk__gsmxuic\agent\trajectory.json
+Collecting main service artifacts
+Skipping image OS validation for hb__8f09440a9aace2d1efb1e40158bb8cca: docker inspect returned 1
+Trial medium-baseline-rtk__gsmxuic failed: Verifier execution timed out after 3000.0 seconds

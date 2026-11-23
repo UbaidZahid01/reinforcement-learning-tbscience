@@ -1,0 +1,22 @@
+exit=1 elapsed=149s reward=0
+      4     def test_fix_rate(name):
+      1 =================== 13 failed, 7 passed in 147.69s (0:02:27) ===================
+      4 >       assert m["fix_rate"] >= MIN_FIX_RATE, f"fix rate {m['fix_rate']:.3f} < {MIN_FIX_RATE}"
+      1 FAILED test_state.py::test_fix_rate[alder] - AssertionError: fix rate 0.000 <...
+      1 FAILED test_state.py::test_fix_rate[basalt] - AssertionError: fix rate 0.000 ...
+      1 FAILED test_state.py::test_fix_rate[cedar] - AssertionError: fix rate 0.001 <...
+      1 FAILED test_state.py::test_fix_rate[dune] - AssertionError: fix rate 0.000 < ...
+      1 [alder] epochs=1789 fix_rate=0.000 wrong_fix_frac=0.0000 fixed_median=inf m p95_all=755617410333369459277824.000 m
+      1 [alder] solver exit=0
+      1 [basalt] epochs=1793 fix_rate=0.000 wrong_fix_frac=0.0000 fixed_median=inf m p95_all=2158689648246283032330240.000 m
+      1 [basalt] solver exit=0
+      1 [cedar] epochs=1790 fix_rate=0.001 wrong_fix_frac=1.0000 fixed_median=857115606821474144354304.0000 m p95_all=857115606821474144354304.000 m
+      1 [cedar] solver exit=0
+      1 [dune] epochs=1792 fix_rate=0.000 wrong_fix_frac=0.0000 fixed_median=inf m p95_all=660009735040832037191680.000 m
+      1 [dune] solver exit=0
+      1 ____________________________ test_fix_rate[basalt] _____________________________
+      1 _____________________________ test_fix_rate[alder] _____________________________
+      1 _____________________________ test_fix_rate[cedar] _____________________________
+      1 _____________________________ test_fix_rate[dune] ______________________________
+
+[exited with code 0]

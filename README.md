@@ -71,7 +71,20 @@ See [`trajectories/`](trajectories/) and §6. Run them with `scripts/run_gemini_
 
 ## 6. Trajectory results
 
-_(filled in after runs)_
+Agent: Harbor `terminus-2`, `max_turns=60`, one trial at a time. **The free Gemini key allows 20 requests per model per day** (`GenerateRequestsPerDayPerProjectPerModel-FreeTier`, quota 20), so every run was cut off at about 20 steps. Pro and 4.x models have quota 0 on a free key.
+
+| model | trial | steps | reward | what happened | failure valid? |
+|---|---|---|---|---|---|
+| gemini-2.5-flash | Bx7EFHD | 21 | 0 | still debugging its own RINEX header and epoch parser (column slicing); `main()` wrote a placeholder header-only CSV; then 429 | graded correctly (0 rows); run truncated, so not difficulty evidence |
+| gemini-2.5-flash | kixxmbc | 2 | 0 | 429 after 2 steps, no solver | quota; not a task signal |
+| gemini-3.5-flash | WAaptuF | 24 | 0 | stuck writing files through shell quoting, no solver; then 429 | quota and agent tooling; not a task signal |
+| gemini-3.5-flash | Sxg5YkP | 1 | 0 | 429 on its first call, then waited until the agent timeout | quota; not a task signal |
+| gemini-3-flash-preview | gsmxuic | 13 | 0 | wrote a 212-line **L1-only float** solver (no ionosphere, no ambiguity resolution); positions diverge to 1e24 m, fix rate 0 on all sessions | **valid scientific failure** (re-verified in the verifier image: 149 s, 7 format passed / 13 metric failed, `reverify_standalone_verifier.txt`) |
+| gemini-3-flash-preview | zfnQXnY | 0 | none | no solver produced, Harbor artifact copy error | quota; not a task signal |
+
+The one completed attempt (gsmxuic) failed in exactly the way the task is designed to catch: a single-frequency, ionosphere-free float approach cannot fix ambiguities at medium baselines. Its Harbor verifier phase reported a timeout because it ran while other trial jobs shared the Docker host. The same artifact in the same verifier image with 2 CPUs and 4 GB completes in 149 s with reward 0.
+
+**To get full trajectories:** rerun after the daily quota resets, with a paid Gemini key, or with a frontier agent (`claude-code` / `codex`). TB-Science calibrates on frontier models, not Flash.
 
 ## Reproduce
 

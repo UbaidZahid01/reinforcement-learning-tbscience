@@ -1,0 +1,31 @@
+[?2004hroot@06fdc9deb350:~# asciinema rec --stdin /logs/agent/recording.cast
+[?2004l[0;32masciinema: recording asciicast to /logs/agent/recording.cast[0m
+[0;32masciinema: press <ctrl-d> or type "exit" when you're done[0m
+[?2004hroot@06fdc9deb350:~# clear
+[?2004l[H[J[3J[?2004hroot@06fdc9deb350:~# ls -l /root/data/development/
+[?2004ltotal 3928
+-rw-r--r-- 1 root root 1963836 Nov 22 21:51 base.rnx
+-rwxr-xr-x 1 root root   19396 Nov 22 21:47 nav.rnx
+-rwxr-xr-x 1 root root  102106 Nov 22 21:47 reference_trajectory.csv
+-rw-r--r-- 1 root root 1927892 Nov 22 21:51 rover.rnx
+-rwxr-xr-x 1 root root      90 Nov 22 21:47 session.json
+[?2004hroot@06fdc9deb350:~# cat /root/data/development/session.json
+[?2004l{
+  "base_position_ecef_m": [
+    -2693655.112,
+    -4297385.7651,
+    3854523.5123
+  ]
+}
+[?2004hroot@06fdc9deb350:~# head /root/data/development/reference_trajectory.csv
+[?2004lgps_week,tow,x,y,z
+2409,225000.000,-2687933.4743,-4297078.6385,3858852.2468
+2409,225001.000,-2687925.8859,-4297088.5319,3858846.5744
+2409,225002.000,-2687919.1575,-4297098.7654,3858839.9628
+2409,225003.000,-2687913.3567,-4297109.2507,3858832.4629
+2409,225004.000,-2687908.5363,-4297119.9002,3858824.1348
+2409,225005.000,-2687904.7337,-4297130.6293,3858815.0464
+2409,225006.000,-2687901.9708,-4297141.3580,3858805.2704
+2409,225007.000,-2687900.2544,-4297152.0136,3858794.8828
+2409,225008.000,-2687899.5765,-4297162.5312,3858783.9605
+[?2004hroot@06fdc9deb350:~# 

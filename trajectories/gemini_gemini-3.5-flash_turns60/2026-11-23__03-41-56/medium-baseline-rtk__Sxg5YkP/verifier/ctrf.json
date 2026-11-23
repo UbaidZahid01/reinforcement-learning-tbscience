@@ -1,0 +1,95 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 5,
+            "passed": 0,
+            "failed": 5,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1795433831.144611,
+            "stop": 1795433833.8133242
+        },
+        "tests": [
+            {
+                "name": "test_state.py::test_solution_format",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.014449080000304093,
+                "start": 1795433832.4032476,
+                "stop": 1795433832.674802,
+                "retries": 3,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::name::['alder', 'basalt', 'cedar', 'dune']"
+                ],
+                "trace": "name = 'dune'\n\n    @pytest.mark.parametrize(\"name\", SESSIONS)\n    def test_solution_format(name):\n        \"\"\"solution.csv exists, has the documented header, one row per rover epoch in order, finite values.\"\"\"\n>       graded(name)\n\ntest_state.py:176: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nname = 'dune'\n\n    @lru_cache(maxsize=None)\n    def graded(name: str):\n        \"\"\"Run, parse and score one hidden session (AssertionError on format failure).\"\"\"\n        status, rows = run_session(name)\n>       assert status == \"ok\", rows\nE       AssertionError: /root/results/solver.py missing or not a regular file\nE       assert 'error' == 'ok'\nE         \nE         - ok\nE         + error\n\ntest_state.py:163: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_state.py::test_fix_rate",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.014356235000377637,
+                "start": 1795433832.9906774,
+                "stop": 1795433833.0556324,
+                "retries": 3,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::name::['alder', 'basalt', 'cedar', 'dune']"
+                ],
+                "trace": "name = 'dune'\n\n    @pytest.mark.parametrize(\"name\", SESSIONS)\n    def test_fix_rate(name):\n        \"\"\"At least 75% of the rover epochs carry an integer-fixed solution.\"\"\"\n>       m = graded(name)\n            ^^^^^^^^^^^^\n\ntest_state.py:182: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nname = 'dune'\n\n    @lru_cache(maxsize=None)\n    def graded(name: str):\n        \"\"\"Run, parse and score one hidden session (AssertionError on format failure).\"\"\"\n        status, rows = run_session(name)\n>       assert status == \"ok\", rows\nE       AssertionError: /root/results/solver.py missing or not a regular file\nE       assert 'error' == 'ok'\nE         \nE         - ok\nE         + error\n\ntest_state.py:163: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_state.py::test_fixed_integrity",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.01236054199944192,
+                "start": 1795433833.2518466,
+                "stop": 1795433833.3206809,
+                "retries": 3,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::name::['alder', 'basalt', 'cedar', 'dune']"
+                ],
+                "trace": "name = 'dune'\n\n    @pytest.mark.parametrize(\"name\", SESSIONS)\n    def test_fixed_integrity(name):\n        \"\"\"At most 1% of fixed epochs lie more than 0.10 m (3-D) from the true rover position.\"\"\"\n>       m = graded(name)\n            ^^^^^^^^^^^^\n\ntest_state.py:189: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nname = 'dune'\n\n    @lru_cache(maxsize=None)\n    def graded(name: str):\n        \"\"\"Run, parse and score one hidden session (AssertionError on format failure).\"\"\"\n        status, rows = run_session(name)\n>       assert status == \"ok\", rows\nE       AssertionError: /root/results/solver.py missing or not a regular file\nE       assert 'error' == 'ok'\nE         \nE         - ok\nE         + error\n\ntest_state.py:163: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_state.py::test_fixed_precision",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.005287627000143402,
+                "start": 1795433833.5183392,
+                "stop": 1795433833.569851,
+                "retries": 3,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::name::['alder', 'basalt', 'cedar', 'dune']"
+                ],
+                "trace": "name = 'dune'\n\n    @pytest.mark.parametrize(\"name\", SESSIONS)\n    def test_fixed_precision(name):\n        \"\"\"Median 3-D error of the fixed epochs is at most 0.04 m.\"\"\"\n>       m = graded(name)\n            ^^^^^^^^^^^^\n\ntest_state.py:196: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nname = 'dune'\n\n    @lru_cache(maxsize=None)\n    def graded(name: str):\n        \"\"\"Run, parse and score one hidden session (AssertionError on format failure).\"\"\"\n        status, rows = run_session(name)\n>       assert status == \"ok\", rows\nE       AssertionError: /root/results/solver.py missing or not a regular file\nE       assert 'error' == 'ok'\nE         \nE         - ok\nE         + error\n\ntest_state.py:163: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_state.py::test_overall_accuracy",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0043278499997541076,
+                "start": 1795433833.692815,
+                "stop": 1795433833.7352514,
+                "retries": 3,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::name::['alder', 'basalt', 'cedar', 'dune']"
+                ],
+                "trace": "name = 'dune'\n\n    @pytest.mark.parametrize(\"name\", SESSIONS)\n    def test_overall_accuracy(name):\n        \"\"\"95th percentile of the 3-D error over all epochs (fixed and float) is at most 0.50 m.\"\"\"\n>       m = graded(name)\n            ^^^^^^^^^^^^\n\ntest_state.py:203: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nname = 'dune'\n\n    @lru_cache(maxsize=None)\n    def graded(name: str):\n        \"\"\"Run, parse and score one hidden session (AssertionError on format failure).\"\"\"\n        status, rows = run_session(name)\n>       assert status == \"ok\", rows\nE       AssertionError: /root/results/solver.py missing or not a regular file\nE       assert 'error' == 'ok'\nE         \nE         - ok\nE         + error\n\ntest_state.py:163: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

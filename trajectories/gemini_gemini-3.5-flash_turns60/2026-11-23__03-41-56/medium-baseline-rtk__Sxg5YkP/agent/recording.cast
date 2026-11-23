@@ -1,0 +1,12 @@
+{"version": 2, "width": 160, "height": 40, "timestamp": 1795387898, "env": {"SHELL": "/bin/bash", "TERM": "tmux-256color"}}
+[0.008633, "o", "\u001b[?2004hroot@ea24416d3803:~# "]
+[0.90901, "i", "clear\r"]
+[0.9095, "o", "clear\r\n\u001b[?2004l\r"]
+[0.915059, "o", "\u001b[H\u001b[J\u001b[3J\u001b[?2004hroot@ea24416d3803:~# "]
+[10844.282696, "i", "ls -la /root /root/data/development/\n"]
+[10844.304519, "o", "ls -la /root /root/data/development/\r\n\u001b[?2004l\r"]
+[10844.382785, "o", "/root:\r\n"]
+[10844.382928, "o", "total 32\r\ndrwx------ 1 root root 4096 Nov 22 22:51 .\r\ndrwxr-xr-x 1 root root 4096 Nov 22 22:51 ..\r\n-rw-r--r-- 1 root root  571 Apr 10  2021 .bashrc\r\ndrwxr-xr-x 3 root root 4096 Nov 22 22:51 .config\r\n-rw-r--r-- 1 root root  161 Jul  9  2019 .profile\r\n-rw-r--r-- 1 root root  169 Nov  5 07:52 .wget-hsts\r\ndrwxr-xr-x 1 root root 4096 Nov 22 21:47 data\r\ndrwxr-xr-x 2 root root 4096 Nov 22 21:51 results\r\n"]
+[10844.382988, "o", "\r\n/root/data/development/:\r\n"]
+[10844.383436, "o", "total 3936\r\ndrwxr-xr-x 1 root root    4096 Nov 22 21:51 .\r\ndrwxr-xr-x 1 root root    4096 Nov 22 21:47 ..\r\n-rw-r--r-- 1 root root 1963836 Nov 22 21:51 base.rnx\r\n-rwxr-xr-x 1 root root   19396 Nov 22 21:47 nav.rnx\r\n-rwxr-xr-x 1 root root  102106 Nov 22 21:47 reference_trajectory.csv\r\n-rw-r--r-- 1 root root 1927892 Nov 22 21:51 rover.rnx\r\n-rwxr-xr-x 1 root root      90 Nov 22 21:47 session.json\r\n"]
+[10844.385156, "o", "\u001b[?2004hroot@ea24416d3803:~# "]

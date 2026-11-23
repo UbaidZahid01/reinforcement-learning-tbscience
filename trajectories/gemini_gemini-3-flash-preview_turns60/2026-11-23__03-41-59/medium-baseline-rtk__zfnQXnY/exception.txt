@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "C:\Users\HAY\AppData\Roaming\uv\tools\harbor\Lib\site-packages\harbor\trial\trial.py", line 613, in run
+    await self._prepare()
+  File "C:\Users\HAY\AppData\Roaming\uv\tools\harbor\Lib\site-packages\harbor\trial\trial.py", line 663, in _prepare
+    await self._setup_agent()
+  File "C:\Users\HAY\AppData\Roaming\uv\tools\harbor\Lib\site-packages\harbor\trial\trial.py", line 1915, in _setup_agent
+    await asyncio.wait_for(
+  File "C:\Users\HAY\AppData\Local\Programs\Python\Python312\Lib\asyncio\tasks.py", line 520, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "C:\Users\HAY\AppData\Roaming\uv\tools\harbor\Lib\site-packages\harbor\agents\terminus_2\terminus_2.py", line 603, in setup
+    await self._session.start()
+  File "C:\Users\HAY\AppData\Roaming\uv\tools\harbor\Lib\site-packages\harbor\agents\terminus_2\tmux_session.py", line 511, in start
+    raise RuntimeError(
+RuntimeError: Failed to start tmux session. Error: None

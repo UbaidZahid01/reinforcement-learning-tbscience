@@ -1,0 +1,159 @@
+{
+    "schema_version": 1,
+    "id": "d899346f-fbab-4baf-b755-df3ad6e01fc9",
+    "task_name": "terminal-bench-science/medium-baseline-rtk",
+    "trial_name": "medium-baseline-rtk__gsmxuic",
+    "trial_uri": "file:///C:/Users/HAY/Desktop/RL-task/trajectories/gemini_gemini-3-flash-preview_turns60/2026-11-23__03-41-59/medium-baseline-rtk__gsmxuic",
+    "task_id": {
+        "path": "tasks\\earth-sciences\\geosciences\\medium-baseline-rtk"
+    },
+    "source": null,
+    "task_checksum": "8865d7121b44c5d232e5e4f6aa37821bb0d1571f44bab230732fe1ff29cfde3e",
+    "config": {
+        "schema_version": 1,
+        "task": {
+            "path": "tasks\\earth-sciences\\geosciences\\medium-baseline-rtk",
+            "git_url": null,
+            "git_commit_id": null,
+            "name": null,
+            "ref": null,
+            "overwrite": false,
+            "download_dir": null,
+            "source": null
+        },
+        "trial_name": "medium-baseline-rtk__gsmxuic",
+        "trials_dir": "trajectories\\gemini_gemini-3-flash-preview_turns60\\2026-11-23__03-41-59",
+        "install_only": false,
+        "timeout_multiplier": 1.0,
+        "agent_timeout_multiplier": null,
+        "verifier_timeout_multiplier": null,
+        "agent_setup_timeout_multiplier": null,
+        "environment_build_timeout_multiplier": null,
+        "agent": {
+            "name": "terminus-2",
+            "import_path": null,
+            "model_name": "gemini/gemini-3-flash-preview",
+            "base_url": null,
+            "model_api_key_name": null,
+            "model_api_format": null,
+            "skip_model_parsing": false,
+            "n_concurrent": null,
+            "concurrency_group": null,
+            "skills": [],
+            "override_timeout_sec": null,
+            "override_setup_timeout_sec": null,
+            "max_timeout_sec": null,
+            "resume_trajectory": false,
+            "load_trajectory": null,
+            "extra_allowed_hosts": [],
+            "kwargs": {
+                "max_turns": 60
+            },
+            "mcp_servers": []
+        },
+        "user_agent": null,
+        "environment": {
+            "type": "docker",
+            "import_path": null,
+            "force_build": false,
+            "delete": true,
+            "stream": false,
+            "cpu_enforcement_policy": "auto",
+            "memory_enforcement_policy": "auto",
+            "override_cpus": null,
+            "override_memory_mb": null,
+            "override_storage_mb": null,
+            "override_gpus": null,
+            "override_tpu": null,
+            "mounts": null,
+            "extra_docker_compose": [],
+            "kwargs": {},
+            "extra_allowed_hosts": []
+        },
+        "verifier": {
+            "override_timeout_sec": null,
+            "max_timeout_sec": null,
+            "disable": false
+        },
+        "override_error_policy": {},
+        "artifacts": [],
+        "extra_instruction_paths": [],
+        "extra_instructions": [],
+        "job_id": "6d939877-3a35-4787-afb3-53448c466c93",
+        "source_trial": null
+    },
+    "agent_info": {
+        "name": "terminus-2",
+        "version": "2.0.0",
+        "model_info": {
+            "name": "gemini-3-flash-preview",
+            "provider": "gemini"
+        }
+    },
+    "agent_result": {
+        "n_input_tokens": 276477,
+        "n_cache_tokens": 200165,
+        "n_output_tokens": 36279,
+        "cost_usd": 0.15700125,
+        "model_usage": {
+            "gemini-3-flash-preview": {
+                "n_input_tokens": 276477,
+                "n_cache_tokens": 200165,
+                "n_output_tokens": 36279,
+                "cost_usd": 0.15700125
+            }
+        },
+        "rollout_details": [],
+        "metadata": {
+            "n_episodes": 12,
+            "api_request_times_msec": [
+                10160.490036010742,
+                9123.043298721313,
+                10868.613004684448,
+                16491.257190704346,
+                8897.103786468506,
+                38279.30021286011,
+                4234.0850830078125,
+                3092.740774154663,
+                9796.76342010498,
+                17082.60750770569,
+                36299.66902732849,
+                25758.779287338257
+            ],
+            "summarization_count": 0
+        }
+    },
+    "verifier_result": null,
+    "verifier_environment_mode": "separate",
+    "exception_info": {
+        "exception_type": "VerifierTimeoutError",
+        "exception_message": "Verifier execution timed out after 3000.0 seconds",
+        "exception_traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\HAY\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\asyncio\\tasks.py\", line 520, in wait_for\n    return await fut\n           ^^^^^^^^^\n  File \"C:\\Users\\HAY\\AppData\\Roaming\\uv\\tools\\harbor\\Lib\\site-packages\\harbor\\verifier\\verifier.py\", line 269, in verify\n    await self.environment.exec(\n  File \"C:\\Users\\HAY\\AppData\\Roaming\\uv\\tools\\harbor\\Lib\\site-packages\\harbor\\environments\\docker\\docker.py\", line 1407, in exec\n    return await self._compose_exec(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\HAY\\AppData\\Roaming\\uv\\tools\\harbor\\Lib\\site-packages\\harbor\\environments\\docker\\docker.py\", line 1484, in _compose_exec\n    return await self._run_docker_compose_command(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\HAY\\AppData\\Roaming\\uv\\tools\\harbor\\Lib\\site-packages\\harbor\\environments\\docker\\docker.py\", line 801, in _run_docker_compose_command\n    result = await self._collect_buffered_output(\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\HAY\\AppData\\Roaming\\uv\\tools\\harbor\\Lib\\site-packages\\harbor\\environments\\docker\\docker.py\", line 831, in _collect_buffered_output\n    stdout_bytes, stderr_bytes = await process.communicate(input=stdin_data)\n                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\HAY\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\asyncio\\subprocess.py\", line 201, in communicate\n    stdin, stdout, stderr = await tasks.gather(stdin, stdout, stderr)\n                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\HAY\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\asyncio\\subprocess.py\", line 181, in _read_stream\n    output = await stream.read()\n             ^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\HAY\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\asyncio\\streams.py\", line 706, in read\n    block = await self.read(self._limit)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\HAY\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\asyncio\\streams.py\", line 713, in read\n    await self._wait_for_data('read')\n  File \"C:\\Users\\HAY\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\asyncio\\streams.py\", line 545, in _wait_for_data\n    await self._waiter\nasyncio.exceptions.CancelledError\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"C:\\Users\\HAY\\AppData\\Roaming\\uv\\tools\\harbor\\Lib\\site-packages\\harbor\\trial\\trial.py\", line 994, in _verify_with_timeout\n    return await asyncio.wait_for(verifier.verify(), timeout=timeout_sec)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\HAY\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\asyncio\\tasks.py\", line 519, in wait_for\n    async with timeouts.timeout(timeout):\n  File \"C:\\Users\\HAY\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\asyncio\\timeouts.py\", line 115, in __aexit__\n    raise TimeoutError from exc_val\nTimeoutError\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"C:\\Users\\HAY\\AppData\\Roaming\\uv\\tools\\harbor\\Lib\\site-packages\\harbor\\trial\\trial.py\", line 616, in run\n    await self._run()\n  File \"C:\\Users\\HAY\\AppData\\Roaming\\uv\\tools\\harbor\\Lib\\site-packages\\harbor\\trial\\single_step.py\", line 52, in _run\n    await self._run_verifier()\n  File \"C:\\Users\\HAY\\AppData\\Roaming\\uv\\tools\\harbor\\Lib\\site-packages\\harbor\\trial\\single_step.py\", line 102, in _run_verifier\n    self.result.verifier_result = await self._run_separate_verifier(\n                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\HAY\\AppData\\Roaming\\uv\\tools\\harbor\\Lib\\site-packages\\harbor\\trial\\trial.py\", line 1101, in _run_separate_verifier\n    return await self._verify_with_timeout(verifier, timeout_sec)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\HAY\\AppData\\Roaming\\uv\\tools\\harbor\\Lib\\site-packages\\harbor\\trial\\trial.py\", line 998, in _verify_with_timeout\n    raise VerifierTimeoutError(\nharbor.trial.errors.VerifierTimeoutError: Verifier execution timed out after 3000.0 seconds\n",
+        "occurred_at": "2026-11-23T01:52:21.730052Z",
+        "policy": {
+            "should_retry": false,
+            "should_grade": true,
+            "has_valid_reward": false
+        }
+    },
+    "started_at": "2026-11-22T22:42:33.770055Z",
+    "finished_at": "2026-11-23T01:52:21.737029Z",
+    "environment_setup": {
+        "started_at": "2026-11-22T22:42:34.765833Z",
+        "finished_at": "2026-11-22T22:43:26.168280Z"
+    },
+    "agent_setup": {
+        "started_at": "2026-11-22T22:43:26.168280Z",
+        "finished_at": "2026-11-22T22:44:31.266616Z"
+    },
+    "agent_execution": {
+        "started_at": "2026-11-22T22:44:31.267789Z",
+        "finished_at": "2026-11-22T22:50:33.400612Z"
+    },
+    "verifier": {
+        "started_at": "2026-11-22T22:50:41.725743Z",
+        "finished_at": "2026-11-23T01:52:21.550479Z"
+    },
+    "step_results": null,
+    "reward_valid": false
+}

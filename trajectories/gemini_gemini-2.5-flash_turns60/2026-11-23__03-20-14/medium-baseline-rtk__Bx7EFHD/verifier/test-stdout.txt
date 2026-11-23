@@ -1,0 +1,911 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.16, pytest-8.4.1, pluggy-1.7.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 20 items
+
+test_state.py FFFFFFFFFFFFFFFFFFFF                                       [100%]
+
+=================================== FAILURES ===================================
+_________________________ test_solution_format[alder] __________________________
+
+name = 'alder'
+
+    @pytest.mark.parametrize("name", SESSIONS)
+    def test_solution_format(name):
+        """solution.csv exists, has the documented header, one row per rover epoch in order, finite values."""
+>       graded(name)
+
+test_state.py:176: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+test_state.py:167: in graded
+    m = score_solution(rows, epochs, truth[:, 2:5])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+rows = [['gps_week', 'tow', 'x', 'y', 'z', 'status']]
+epochs = [(2415, 286200.0), (2415, 286201.0), (2415, 286202.0), (2415, 286203.0), (2415, 286204.0), (2415, 286205.0), ...]
+truth_xyz = array([[4288487.9715,  639946.1553, 4662517.3116],
+       [4288479.6191,  639952.038 , 4662524.1242],
+       [4288471...., 4668502.5016],
+       [4280369.6241,  650228.6446, 4668501.9869],
+       [4280368.1298,  650239.9534, 4668501.758 ]])
+
+    def score_solution(rows, epochs, truth_xyz):
+        """Validate a parsed solution.csv against the rover epochs and score it.
+    
+        rows: list of CSV rows (header first); epochs: [(gps_week, tow)] of the
+        rover file; truth_xyz: (n, 3) true antenna positions. Raises
+        AssertionError on a format violation, otherwise returns the metrics.
+        """
+        assert rows and [c.strip() for c in rows[0]] == HEADER, f"header must be {','.join(HEADER)}"
+        body = rows[1:]
+>       assert len(body) == len(epochs), f"expected {len(epochs)} rows (one per rover epoch), got {len(body)}"
+E       AssertionError: expected 1789 rows (one per rover epoch), got 0
+E       assert 0 == 1789
+E        +  where 0 = len([])
+E        +  and   1789 = len([(2415, 286200.0), (2415, 286201.0), (2415, 286202.0), (2415, 286203.0), (2415, 286204.0), (2415, 286205.0), ...])
+
+test_state.py:126: AssertionError
+----------------------------- Captured stdout call -----------------------------
+[alder] solver exit=0
+stdout tail: Solver script started.
+Loaded base position: [4279819.8273  642678.292  4670037.5188]
+Parsed navigation file. Found ephemeris for 31 satellites.
+First ephemeris for G01: TOE=288000.0, M0=1.930060298442
+Parsed base observation file. Found 1800 epochs.
+Observed types: ['C1C', 'L1C', 'D1C', 'S1C', 'C2W', 'L2W', 'D2W', 'S2W']
+First epoch (2026/4/22 7:30:0.0) has 9 satellites.
+Parsed rover observation file. Found 1789 epochs.
+Calculating G01 position for GPS Week 2415, TOW 286200.0
+Calculated G01 ECEF position: [ 11463278.60075223 -12743726.49260864 -20330876.74978808]
+Calculated G01 clock bias: 0.0002456413163876452
+Empty solution.csv created at /tmp/rtk_alder_cg0ubxem/output/solution.csv
+
+stderr tail: 
+_________________________ test_solution_format[basalt] _________________________
+
+name = 'basalt'
+
+    @pytest.mark.parametrize("name", SESSIONS)
+    def test_solution_format(name):
+        """solution.csv exists, has the documented header, one row per rover epoch in order, finite values."""
+>       graded(name)
+
+test_state.py:176: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+test_state.py:167: in graded
+    m = score_solution(rows, epochs, truth[:, 2:5])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+rows = [['gps_week', 'tow', 'x', 'y', 'z', 'status']]
+epochs = [(2418, 267300.0), (2418, 267301.0), (2418, 267302.0), (2418, 267303.0), (2418, 267304.0), (2418, 267305.0), ...]
+truth_xyz = array([[-4645191.8964,  2557107.2207, -3532799.7926],
+       [-4645186.824 ,  2557103.9933, -3532808.7491],
+       [-4...535.7342],
+       [-4637463.1305,  2556198.0293, -3543543.5429],
+       [-4637456.9242,  2556198.2813, -3543551.4083]])
+
+    def score_solution(rows, epochs, truth_xyz):
+        """Validate a parsed solution.csv against the rover epochs and score it.
+    
+        rows: list of CSV rows (header first); epochs: [(gps_week, tow)] of the
+        rover file; truth_xyz: (n, 3) true antenna positions. Raises
+        AssertionError on a format violation, otherwise returns the metrics.
+        """
+        assert rows and [c.strip() for c in rows[0]] == HEADER, f"header must be {','.join(HEADER)}"
+        body = rows[1:]
+>       assert len(body) == len(epochs), f"expected {len(epochs)} rows (one per rover epoch), got {len(body)}"
+E       AssertionError: expected 1793 rows (one per rover epoch), got 0
+E       assert 0 == 1793
+E        +  where 0 = len([])
+E        +  and   1793 = len([(2418, 267300.0), (2418, 267301.0), (2418, 267302.0), (2418, 267303.0), (2418, 267304.0), (2418, 267305.0), ...])
+
+test_state.py:126: AssertionError
+----------------------------- Captured stdout call -----------------------------
+[basalt] solver exit=0
+stdout tail: d base position: [-4646050.2003  2553131.8495 -3534507.9845]
+Parsed navigation file. Found ephemeris for 31 satellites.
+First ephemeris for G01: TOE=273600.0, M0=1.388614598539
+Parsed base observation file. Found 1800 epochs.
+Observed types: ['C1C', 'L1C', 'D1C', 'S1C', 'C2W', 'L2W', 'D2W', 'S2W']
+First epoch (2026/5/13 2:15:0.0) has 13 satellites.
+G01 observations in first epoch: {'C1C': 22631217.57, 'L1C': 237855590.36, 'D1C': -2988.345, 'S1C': 40.896, 'C2W': 22631223.328}
+Parsed rover observation file. Found 1793 epochs.
+Calculating G01 position for GPS Week 2418, TOW 267300.0
+Calculated G01 ECEF position: [  2476387.40224903 -15134387.60268429 -21503276.4077147 ]
+Calculated G01 clock bias: 0.0003802900557134442
+Empty solution.csv created at /tmp/rtk_basalt_1gvqmpla/output/solution.csv
+
+stderr tail: 
+_________________________ test_solution_format[cedar] __________________________
+
+name = 'cedar'
+
+    @pytest.mark.parametrize("name", SESSIONS)
+    def test_solution_format(name):
+        """solution.csv exists, has the documented header, one row per rover epoch in order, finite values."""
+>       graded(name)
+
+test_state.py:176: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+test_state.py:167: in graded
+    m = score_solution(rows, epochs, truth[:, 2:5])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+rows = [['gps_week', 'tow', 'x', 'y', 'z', 'status']]
+epochs = [(2423, 305100.0), (2423, 305101.0), (2423, 305102.0), (2423, 305103.0), (2423, 305104.0), (2423, 305105.0), ...]
+truth_xyz = array([[3922784.0216,  314051.553 , 5002557.373 ],
+       [3922791.4161,  314039.5612, 5002552.3392],
+       [3922798...., 4993786.6505],
+       [3934927.8462,  302640.1126, 4993778.0377],
+       [3934938.4229,  302643.2578, 4993769.5738]])
+
+    def score_solution(rows, epochs, truth_xyz):
+        """Validate a parsed solution.csv against the rover epochs and score it.
+    
+        rows: list of CSV rows (header first); epochs: [(gps_week, tow)] of the
+        rover file; truth_xyz: (n, 3) true antenna positions. Raises
+        AssertionError on a format violation, otherwise returns the metrics.
+        """
+        assert rows and [c.strip() for c in rows[0]] == HEADER, f"header must be {','.join(HEADER)}"
+        body = rows[1:]
+>       assert len(body) == len(epochs), f"expected {len(epochs)} rows (one per rover epoch), got {len(body)}"
+E       AssertionError: expected 1790 rows (one per rover epoch), got 0
+E       assert 0 == 1790
+E        +  where 0 = len([])
+E        +  and   1790 = len([(2423, 305100.0), (2423, 305101.0), (2423, 305102.0), (2423, 305103.0), (2423, 305104.0), (2423, 305105.0), ...])
+
+test_state.py:126: AssertionError
+----------------------------- Captured stdout call -----------------------------
+[cedar] solver exit=0
+stdout tail: Solver script started.
+Loaded base position: [3922700.4831  299080.7241 5003490.6641]
+Parsed navigation file. Found ephemeris for 31 satellites.
+First ephemeris for G01: TOE=309600.0, M0=2.27599125886
+Parsed base observation file. Found 1800 epochs.
+Observed types: ['C1C', 'L1C', 'D1C', 'S1C', 'C2W', 'L2W', 'D2W', 'S2W']
+First epoch (2026/6/17 12:45:0.0) has 9 satellites.
+Parsed rover observation file. Found 1790 epochs.
+Calculating G01 position for GPS Week 2423, TOW 305100.0
+Calculated G01 ECEF position: [ 14124797.1476931  -10393884.68808161 -19971511.08981398]
+Calculated G01 clock bias: 0.0001460776102113534
+Empty solution.csv created at /tmp/rtk_cedar_jzcw6egq/output/solution.csv
+
+stderr tail: 
+__________________________ test_solution_format[dune] __________________________
+
+name = 'dune'
+
+    @pytest.mark.parametrize("name", SESSIONS)
+    def test_solution_format(name):
+        """solution.csv exists, has the documented header, one row per rover epoch in order, finite values."""
+>       graded(name)
+
+test_state.py:176: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+test_state.py:167: in graded
+    m = score_solution(rows, epochs, truth[:, 2:5])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+rows = [['gps_week', 'tow', 'x', 'y', 'z', 'status']]
+epochs = [(2426, 272100.0), (2426, 272101.0), (2426, 272102.0), (2426, 272103.0), (2426, 272104.0), (2426, 272105.0), ...]
+truth_xyz = array([[-3961595.14  ,  3356586.5731,  3691679.5697],
+       [-3961595.2631,  3356595.977 ,  3691670.9835],
+       [-3...535.4734],
+       [-3958332.908 ,  3371691.8692,  3681534.9561],
+       [-3958325.5139,  3371701.0938,  3681534.443 ]])
+
+    def score_solution(rows, epochs, truth_xyz):
+        """Validate a parsed solution.csv against the rover epochs and score it.
+    
+        rows: list of CSV rows (header first); epochs: [(gps_week, tow)] of the
+        rover file; truth_xyz: (n, 3) true antenna positions. Raises
+        AssertionError on a format violation, otherwise returns the metrics.
+        """
+        assert rows and [c.strip() for c in rows[0]] == HEADER, f"header must be {','.join(HEADER)}"
+        body = rows[1:]
+>       assert len(body) == len(epochs), f"expected {len(epochs)} rows (one per rover epoch), got {len(body)}"
+E       AssertionError: expected 1792 rows (one per rover epoch), got 0
+E       assert 0 == 1792
+E        +  where 0 = len([])
+E        +  and   1792 = len([(2426, 272100.0), (2426, 272101.0), (2426, 272102.0), (2426, 272103.0), (2426, 272104.0), (2426, 272105.0), ...])
+
+test_state.py:126: AssertionError
+----------------------------- Captured stdout call -----------------------------
+[dune] solver exit=0
+stdout tail: Solver script started.
+Loaded base position: [-3955238.3831  3355473.0583  3699431.9739]
+Parsed navigation file. Found ephemeris for 31 satellites.
+First ephemeris for G01: TOE=273600.0, M0=2.926158332495
+Parsed base observation file. Found 1800 epochs.
+Observed types: ['C1C', 'L1C', 'D1C', 'S1C', 'C2W', 'L2W', 'D2W', 'S2W']
+First epoch (2026/7/8 3:35:0.0) has 11 satellites.
+Parsed rover observation file. Found 1792 epochs.
+Calculating G01 position for GPS Week 2426, TOW 272100.0
+Calculated G01 ECEF position: [12625973.18105976 14300193.25101912 18700312.28850194]
+Calculated G01 clock bias: 6.835581470615004e-05
+Empty solution.csv created at /tmp/rtk_dune_4qni_y1r/output/solution.csv
+
+stderr tail: 
+_____________________________ test_fix_rate[alder] _____________________________
+
+name = 'alder'
+
+    @pytest.mark.parametrize("name", SESSIONS)
+    def test_fix_rate(name):
+        """At least 75% of the rover epochs carry an integer-fixed solution."""
+>       m = graded(name)
+            ^^^^^^^^^^^^
+
+test_state.py:182: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+test_state.py:167: in graded
+    m = score_solution(rows, epochs, truth[:, 2:5])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+rows = [['gps_week', 'tow', 'x', 'y', 'z', 'status']]
+epochs = [(2415, 286200.0), (2415, 286201.0), (2415, 286202.0), (2415, 286203.0), (2415, 286204.0), (2415, 286205.0), ...]
+truth_xyz = array([[4288487.9715,  639946.1553, 4662517.3116],
+       [4288479.6191,  639952.038 , 4662524.1242],
+       [4288471...., 4668502.5016],
+       [4280369.6241,  650228.6446, 4668501.9869],
+       [4280368.1298,  650239.9534, 4668501.758 ]])
+
+    def score_solution(rows, epochs, truth_xyz):
+        """Validate a parsed solution.csv against the rover epochs and score it.
+    
+        rows: list of CSV rows (header first); epochs: [(gps_week, tow)] of the
+        rover file; truth_xyz: (n, 3) true antenna positions. Raises
+        AssertionError on a format violation, otherwise returns the metrics.
+        """
+        assert rows and [c.strip() for c in rows[0]] == HEADER, f"header must be {','.join(HEADER)}"
+        body = rows[1:]
+>       assert len(body) == len(epochs), f"expected {len(epochs)} rows (one per rover epoch), got {len(body)}"
+E       AssertionError: expected 1789 rows (one per rover epoch), got 0
+E       assert 0 == 1789
+E        +  where 0 = len([])
+E        +  and   1789 = len([(2415, 286200.0), (2415, 286201.0), (2415, 286202.0), (2415, 286203.0), (2415, 286204.0), (2415, 286205.0), ...])
+
+test_state.py:126: AssertionError
+____________________________ test_fix_rate[basalt] _____________________________
+
+name = 'basalt'
+
+    @pytest.mark.parametrize("name", SESSIONS)
+    def test_fix_rate(name):
+        """At least 75% of the rover epochs carry an integer-fixed solution."""
+>       m = graded(name)
+            ^^^^^^^^^^^^
+
+test_state.py:182: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+test_state.py:167: in graded
+    m = score_solution(rows, epochs, truth[:, 2:5])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+rows = [['gps_week', 'tow', 'x', 'y', 'z', 'status']]
+epochs = [(2418, 267300.0), (2418, 267301.0), (2418, 267302.0), (2418, 267303.0), (2418, 267304.0), (2418, 267305.0), ...]
+truth_xyz = array([[-4645191.8964,  2557107.2207, -3532799.7926],
+       [-4645186.824 ,  2557103.9933, -3532808.7491],
+       [-4...535.7342],
+       [-4637463.1305,  2556198.0293, -3543543.5429],
+       [-4637456.9242,  2556198.2813, -3543551.4083]])
+
+    def score_solution(rows, epochs, truth_xyz):
+        """Validate a parsed solution.csv against the rover epochs and score it.
+    
+        rows: list of CSV rows (header first); epochs: [(gps_week, tow)] of the
+        rover file; truth_xyz: (n, 3) true antenna positions. Raises
+        AssertionError on a format violation, otherwise returns the metrics.
+        """
+        assert rows and [c.strip() for c in rows[0]] == HEADER, f"header must be {','.join(HEADER)}"
+        body = rows[1:]
+>       assert len(body) == len(epochs), f"expected {len(epochs)} rows (one per rover epoch), got {len(body)}"
+E       AssertionError: expected 1793 rows (one per rover epoch), got 0
+E       assert 0 == 1793
+E        +  where 0 = len([])
+E        +  and   1793 = len([(2418, 267300.0), (2418, 267301.0), (2418, 267302.0), (2418, 267303.0), (2418, 267304.0), (2418, 267305.0), ...])
+
+test_state.py:126: AssertionError
+_____________________________ test_fix_rate[cedar] _____________________________
+
+name = 'cedar'
+
+    @pytest.mark.parametrize("name", SESSIONS)
+    def test_fix_rate(name):
+        """At least 75% of the rover epochs carry an integer-fixed solution."""
+>       m = graded(name)
+            ^^^^^^^^^^^^
+
+test_state.py:182: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+test_state.py:167: in graded
+    m = score_solution(rows, epochs, truth[:, 2:5])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+rows = [['gps_week', 'tow', 'x', 'y', 'z', 'status']]
+epochs = [(2423, 305100.0), (2423, 305101.0), (2423, 305102.0), (2423, 305103.0), (2423, 305104.0), (2423, 305105.0), ...]
+truth_xyz = array([[3922784.0216,  314051.553 , 5002557.373 ],
+       [3922791.4161,  314039.5612, 5002552.3392],
+       [3922798...., 4993786.6505],
+       [3934927.8462,  302640.1126, 4993778.0377],
+       [3934938.4229,  302643.2578, 4993769.5738]])
+
+    def score_solution(rows, epochs, truth_xyz):
+        """Validate a parsed solution.csv against the rover epochs and score it.
+    
+        rows: list of CSV rows (header first); epochs: [(gps_week, tow)] of the
+        rover file; truth_xyz: (n, 3) true antenna positions. Raises
+        AssertionError on a format violation, otherwise returns the metrics.
+        """
+        assert rows and [c.strip() for c in rows[0]] == HEADER, f"header must be {','.join(HEADER)}"
+        body = rows[1:]
+>       assert len(body) == len(epochs), f"expected {len(epochs)} rows (one per rover epoch), got {len(body)}"
+E       AssertionError: expected 1790 rows (one per rover epoch), got 0
+E       assert 0 == 1790
+E        +  where 0 = len([])
+E        +  and   1790 = len([(2423, 305100.0), (2423, 305101.0), (2423, 305102.0), (2423, 305103.0), (2423, 305104.0), (2423, 305105.0), ...])
+
+test_state.py:126: AssertionError
+_____________________________ test_fix_rate[dune] ______________________________
+
+name = 'dune'
+
+    @pytest.mark.parametrize("name", SESSIONS)
+    def test_fix_rate(name):
+        """At least 75% of the rover epochs carry an integer-fixed solution."""
+>       m = graded(name)
+            ^^^^^^^^^^^^
+
+test_state.py:182: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+test_state.py:167: in graded
+    m = score_solution(rows, epochs, truth[:, 2:5])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+rows = [['gps_week', 'tow', 'x', 'y', 'z', 'status']]
+epochs = [(2426, 272100.0), (2426, 272101.0), (2426, 272102.0), (2426, 272103.0), (2426, 272104.0), (2426, 272105.0), ...]
+truth_xyz = array([[-3961595.14  ,  3356586.5731,  3691679.5697],
+       [-3961595.2631,  3356595.977 ,  3691670.9835],
+       [-3...535.4734],
+       [-3958332.908 ,  3371691.8692,  3681534.9561],
+       [-3958325.5139,  3371701.0938,  3681534.443 ]])
+
+    def score_solution(rows, epochs, truth_xyz):
+        """Validate a parsed solution.csv against the rover epochs and score it.
+    
+        rows: list of CSV rows (header first); epochs: [(gps_week, tow)] of the
+        rover file; truth_xyz: (n, 3) true antenna positions. Raises
+        AssertionError on a format violation, otherwise returns the metrics.
+        """
+        assert rows and [c.strip() for c in rows[0]] == HEADER, f"header must be {','.join(HEADER)}"
+        body = rows[1:]
+>       assert len(body) == len(epochs), f"expected {len(epochs)} rows (one per rover epoch), got {len(body)}"
+E       AssertionError: expected 1792 rows (one per rover epoch), got 0
+E       assert 0 == 1792
+E        +  where 0 = len([])
+E        +  and   1792 = len([(2426, 272100.0), (2426, 272101.0), (2426, 272102.0), (2426, 272103.0), (2426, 272104.0), (2426, 272105.0), ...])
+
+test_state.py:126: AssertionError
+_________________________ test_fixed_integrity[alder] __________________________
+
+name = 'alder'
+
+    @pytest.mark.parametrize("name", SESSIONS)
+    def test_fixed_integrity(name):
+        """At most 1% of fixed epochs lie more than 0.10 m (3-D) from the true rover position."""
+>       m = graded(name)
+            ^^^^^^^^^^^^
+
+test_state.py:189: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+test_state.py:167: in graded
+    m = score_solution(rows, epochs, truth[:, 2:5])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+rows = [['gps_week', 'tow', 'x', 'y', 'z', 'status']]
+epochs = [(2415, 286200.0), (2415, 286201.0), (2415, 286202.0), (2415, 286203.0), (2415, 286204.0), (2415, 286205.0), ...]
+truth_xyz = array([[4288487.9715,  639946.1553, 4662517.3116],
+       [4288479.6191,  639952.038 , 4662524.1242],
+       [4288471...., 4668502.5016],
+       [4280369.6241,  650228.6446, 4668501.9869],
+       [4280368.1298,  650239.9534, 4668501.758 ]])
+
+    def score_solution(rows, epochs, truth_xyz):
+        """Validate a parsed solution.csv against the rover epochs and score it.
+    
+        rows: list of CSV rows (header first); epochs: [(gps_week, tow)] of the
+        rover file; truth_xyz: (n, 3) true antenna positions. Raises
+        AssertionError on a format violation, otherwise returns the metrics.
+        """
+        assert rows and [c.strip() for c in rows[0]] == HEADER, f"header must be {','.join(HEADER)}"
+        body = rows[1:]
+>       assert len(body) == len(epochs), f"expected {len(epochs)} rows (one per rover epoch), got {len(body)}"
+E       AssertionError: expected 1789 rows (one per rover epoch), got 0
+E       assert 0 == 1789
+E        +  where 0 = len([])
+E        +  and   1789 = len([(2415, 286200.0), (2415, 286201.0), (2415, 286202.0), (2415, 286203.0), (2415, 286204.0), (2415, 286205.0), ...])
+
+test_state.py:126: AssertionError
+_________________________ test_fixed_integrity[basalt] _________________________
+
+name = 'basalt'
+
+    @pytest.mark.parametrize("name", SESSIONS)
+    def test_fixed_integrity(name):
+        """At most 1% of fixed epochs lie more than 0.10 m (3-D) from the true rover position."""
+>       m = graded(name)
+            ^^^^^^^^^^^^
+
+test_state.py:189: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+test_state.py:167: in graded
+    m = score_solution(rows, epochs, truth[:, 2:5])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+rows = [['gps_week', 'tow', 'x', 'y', 'z', 'status']]
+epochs = [(2418, 267300.0), (2418, 267301.0), (2418, 267302.0), (2418, 267303.0), (2418, 267304.0), (2418, 267305.0), ...]
+truth_xyz = array([[-4645191.8964,  2557107.2207, -3532799.7926],
+       [-4645186.824 ,  2557103.9933, -3532808.7491],
+       [-4...535.7342],
+       [-4637463.1305,  2556198.0293, -3543543.5429],
+       [-4637456.9242,  2556198.2813, -3543551.4083]])
+
+    def score_solution(rows, epochs, truth_xyz):
+        """Validate a parsed solution.csv against the rover epochs and score it.
+    
+        rows: list of CSV rows (header first); epochs: [(gps_week, tow)] of the
+        rover file; truth_xyz: (n, 3) true antenna positions. Raises
+        AssertionError on a format violation, otherwise returns the metrics.
+        """
+        assert rows and [c.strip() for c in rows[0]] == HEADER, f"header must be {','.join(HEADER)}"
+        body = rows[1:]
+>       assert len(body) == len(epochs), f"expected {len(epochs)} rows (one per rover epoch), got {len(body)}"
+E       AssertionError: expected 1793 rows (one per rover epoch), got 0
+E       assert 0 == 1793
+E        +  where 0 = len([])
+E        +  and   1793 = len([(2418, 267300.0), (2418, 267301.0), (2418, 267302.0), (2418, 267303.0), (2418, 267304.0), (2418, 267305.0), ...])
+
+test_state.py:126: AssertionError
+_________________________ test_fixed_integrity[cedar] __________________________
+
+name = 'cedar'
+
+    @pytest.mark.parametrize("name", SESSIONS)
+    def test_fixed_integrity(name):
+        """At most 1% of fixed epochs lie more than 0.10 m (3-D) from the true rover position."""
+>       m = graded(name)
+            ^^^^^^^^^^^^
+
+test_state.py:189: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+test_state.py:167: in graded
+    m = score_solution(rows, epochs, truth[:, 2:5])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+rows = [['gps_week', 'tow', 'x', 'y', 'z', 'status']]
+epochs = [(2423, 305100.0), (2423, 305101.0), (2423, 305102.0), (2423, 305103.0), (2423, 305104.0), (2423, 305105.0), ...]
+truth_xyz = array([[3922784.0216,  314051.553 , 5002557.373 ],
+       [3922791.4161,  314039.5612, 5002552.3392],
+       [3922798...., 4993786.6505],
+       [3934927.8462,  302640.1126, 4993778.0377],
+       [3934938.4229,  302643.2578, 4993769.5738]])
+
+    def score_solution(rows, epochs, truth_xyz):
+        """Validate a parsed solution.csv against the rover epochs and score it.
+    
+        rows: list of CSV rows (header first); epochs: [(gps_week, tow)] of the
+        rover file; truth_xyz: (n, 3) true antenna positions. Raises
+        AssertionError on a format violation, otherwise returns the metrics.
+        """
+        assert rows and [c.strip() for c in rows[0]] == HEADER, f"header must be {','.join(HEADER)}"
+        body = rows[1:]
+>       assert len(body) == len(epochs), f"expected {len(epochs)} rows (one per rover epoch), got {len(body)}"
+E       AssertionError: expected 1790 rows (one per rover epoch), got 0
+E       assert 0 == 1790
+E        +  where 0 = len([])
+E        +  and   1790 = len([(2423, 305100.0), (2423, 305101.0), (2423, 305102.0), (2423, 305103.0), (2423, 305104.0), (2423, 305105.0), ...])
+
+test_state.py:126: AssertionError
+__________________________ test_fixed_integrity[dune] __________________________
+
+name = 'dune'
+
+    @pytest.mark.parametrize("name", SESSIONS)
+    def test_fixed_integrity(name):
+        """At most 1% of fixed epochs lie more than 0.10 m (3-D) from the true rover position."""
+>       m = graded(name)
+            ^^^^^^^^^^^^
+
+test_state.py:189: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+test_state.py:167: in graded
+    m = score_solution(rows, epochs, truth[:, 2:5])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+rows = [['gps_week', 'tow', 'x', 'y', 'z', 'status']]
+epochs = [(2426, 272100.0), (2426, 272101.0), (2426, 272102.0), (2426, 272103.0), (2426, 272104.0), (2426, 272105.0), ...]
+truth_xyz = array([[-3961595.14  ,  3356586.5731,  3691679.5697],
+       [-3961595.2631,  3356595.977 ,  3691670.9835],
+       [-3...535.4734],
+       [-3958332.908 ,  3371691.8692,  3681534.9561],
+       [-3958325.5139,  3371701.0938,  3681534.443 ]])
+
+    def score_solution(rows, epochs, truth_xyz):
+        """Validate a parsed solution.csv against the rover epochs and score it.
+    
+        rows: list of CSV rows (header first); epochs: [(gps_week, tow)] of the
+        rover file; truth_xyz: (n, 3) true antenna positions. Raises
+        AssertionError on a format violation, otherwise returns the metrics.
+        """
+        assert rows and [c.strip() for c in rows[0]] == HEADER, f"header must be {','.join(HEADER)}"
+        body = rows[1:]
+>       assert len(body) == len(epochs), f"expected {len(epochs)} rows (one per rover epoch), got {len(body)}"
+E       AssertionError: expected 1792 rows (one per rover epoch), got 0
+E       assert 0 == 1792
+E        +  where 0 = len([])
+E        +  and   1792 = len([(2426, 272100.0), (2426, 272101.0), (2426, 272102.0), (2426, 272103.0), (2426, 272104.0), (2426, 272105.0), ...])
+
+test_state.py:126: AssertionError
+_________________________ test_fixed_precision[alder] __________________________
+
+name = 'alder'
+
+    @pytest.mark.parametrize("name", SESSIONS)
+    def test_fixed_precision(name):
+        """Median 3-D error of the fixed epochs is at most 0.04 m."""
+>       m = graded(name)
+            ^^^^^^^^^^^^
+
+test_state.py:196: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+test_state.py:167: in graded
+    m = score_solution(rows, epochs, truth[:, 2:5])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+rows = [['gps_week', 'tow', 'x', 'y', 'z', 'status']]
+epochs = [(2415, 286200.0), (2415, 286201.0), (2415, 286202.0), (2415, 286203.0), (2415, 286204.0), (2415, 286205.0), ...]
+truth_xyz = array([[4288487.9715,  639946.1553, 4662517.3116],
+       [4288479.6191,  639952.038 , 4662524.1242],
+       [4288471...., 4668502.5016],
+       [4280369.6241,  650228.6446, 4668501.9869],
+       [4280368.1298,  650239.9534, 4668501.758 ]])
+
+    def score_solution(rows, epochs, truth_xyz):
+        """Validate a parsed solution.csv against the rover epochs and score it.
+    
+        rows: list of CSV rows (header first); epochs: [(gps_week, tow)] of the
+        rover file; truth_xyz: (n, 3) true antenna positions. Raises
+        AssertionError on a format violation, otherwise returns the metrics.
+        """
+        assert rows and [c.strip() for c in rows[0]] == HEADER, f"header must be {','.join(HEADER)}"
+        body = rows[1:]
+>       assert len(body) == len(epochs), f"expected {len(epochs)} rows (one per rover epoch), got {len(body)}"
+E       AssertionError: expected 1789 rows (one per rover epoch), got 0
+E       assert 0 == 1789
+E        +  where 0 = len([])
+E        +  and   1789 = len([(2415, 286200.0), (2415, 286201.0), (2415, 286202.0), (2415, 286203.0), (2415, 286204.0), (2415, 286205.0), ...])
+
+test_state.py:126: AssertionError
+_________________________ test_fixed_precision[basalt] _________________________
+
+name = 'basalt'
+
+    @pytest.mark.parametrize("name", SESSIONS)
+    def test_fixed_precision(name):
+        """Median 3-D error of the fixed epochs is at most 0.04 m."""
+>       m = graded(name)
+            ^^^^^^^^^^^^
+
+test_state.py:196: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+test_state.py:167: in graded
+    m = score_solution(rows, epochs, truth[:, 2:5])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+rows = [['gps_week', 'tow', 'x', 'y', 'z', 'status']]
+epochs = [(2418, 267300.0), (2418, 267301.0), (2418, 267302.0), (2418, 267303.0), (2418, 267304.0), (2418, 267305.0), ...]
+truth_xyz = array([[-4645191.8964,  2557107.2207, -3532799.7926],
+       [-4645186.824 ,  2557103.9933, -3532808.7491],
+       [-4...535.7342],
+       [-4637463.1305,  2556198.0293, -3543543.5429],
+       [-4637456.9242,  2556198.2813, -3543551.4083]])
+
+    def score_solution(rows, epochs, truth_xyz):
+        """Validate a parsed solution.csv against the rover epochs and score it.
+    
+        rows: list of CSV rows (header first); epochs: [(gps_week, tow)] of the
+        rover file; truth_xyz: (n, 3) true antenna positions. Raises
+        AssertionError on a format violation, otherwise returns the metrics.
+        """
+        assert rows and [c.strip() for c in rows[0]] == HEADER, f"header must be {','.join(HEADER)}"
+        body = rows[1:]
+>       assert len(body) == len(epochs), f"expected {len(epochs)} rows (one per rover epoch), got {len(body)}"
+E       AssertionError: expected 1793 rows (one per rover epoch), got 0
+E       assert 0 == 1793
+E        +  where 0 = len([])
+E        +  and   1793 = len([(2418, 267300.0), (2418, 267301.0), (2418, 267302.0), (2418, 267303.0), (2418, 267304.0), (2418, 267305.0), ...])
+
+test_state.py:126: AssertionError
+_________________________ test_fixed_precision[cedar] __________________________
+
+name = 'cedar'
+
+    @pytest.mark.parametrize("name", SESSIONS)
+    def test_fixed_precision(name):
+        """Median 3-D error of the fixed epochs is at most 0.04 m."""
+>       m = graded(name)
+            ^^^^^^^^^^^^
+
+test_state.py:196: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+test_state.py:167: in graded
+    m = score_solution(rows, epochs, truth[:, 2:5])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+rows = [['gps_week', 'tow', 'x', 'y', 'z', 'status']]
+epochs = [(2423, 305100.0), (2423, 305101.0), (2423, 305102.0), (2423, 305103.0), (2423, 305104.0), (2423, 305105.0), ...]
+truth_xyz = array([[3922784.0216,  314051.553 , 5002557.373 ],
+       [3922791.4161,  314039.5612, 5002552.3392],
+       [3922798...., 4993786.6505],
+       [3934927.8462,  302640.1126, 4993778.0377],
+       [3934938.4229,  302643.2578, 4993769.5738]])
+
+    def score_solution(rows, epochs, truth_xyz):
+        """Validate a parsed solution.csv against the rover epochs and score it.
+    
+        rows: list of CSV rows (header first); epochs: [(gps_week, tow)] of the
+        rover file; truth_xyz: (n, 3) true antenna positions. Raises
+        AssertionError on a format violation, otherwise returns the metrics.
+        """
+        assert rows and [c.strip() for c in rows[0]] == HEADER, f"header must be {','.join(HEADER)}"
+        body = rows[1:]
+>       assert len(body) == len(epochs), f"expected {len(epochs)} rows (one per rover epoch), got {len(body)}"
+E       AssertionError: expected 1790 rows (one per rover epoch), got 0
+E       assert 0 == 1790
+E        +  where 0 = len([])
+E        +  and   1790 = len([(2423, 305100.0), (2423, 305101.0), (2423, 305102.0), (2423, 305103.0), (2423, 305104.0), (2423, 305105.0), ...])
+
+test_state.py:126: AssertionError
+__________________________ test_fixed_precision[dune] __________________________
+
+name = 'dune'
+
+    @pytest.mark.parametrize("name", SESSIONS)
+    def test_fixed_precision(name):
+        """Median 3-D error of the fixed epochs is at most 0.04 m."""
+>       m = graded(name)
+            ^^^^^^^^^^^^
+
+test_state.py:196: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+test_state.py:167: in graded
+    m = score_solution(rows, epochs, truth[:, 2:5])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+rows = [['gps_week', 'tow', 'x', 'y', 'z', 'status']]
+epochs = [(2426, 272100.0), (2426, 272101.0), (2426, 272102.0), (2426, 272103.0), (2426, 272104.0), (2426, 272105.0), ...]
+truth_xyz = array([[-3961595.14  ,  3356586.5731,  3691679.5697],
+       [-3961595.2631,  3356595.977 ,  3691670.9835],
+       [-3...535.4734],
+       [-3958332.908 ,  3371691.8692,  3681534.9561],
+       [-3958325.5139,  3371701.0938,  3681534.443 ]])
+
+    def score_solution(rows, epochs, truth_xyz):
+        """Validate a parsed solution.csv against the rover epochs and score it.
+    
+        rows: list of CSV rows (header first); epochs: [(gps_week, tow)] of the
+        rover file; truth_xyz: (n, 3) true antenna positions. Raises
+        AssertionError on a format violation, otherwise returns the metrics.
+        """
+        assert rows and [c.strip() for c in rows[0]] == HEADER, f"header must be {','.join(HEADER)}"
+        body = rows[1:]
+>       assert len(body) == len(epochs), f"expected {len(epochs)} rows (one per rover epoch), got {len(body)}"
+E       AssertionError: expected 1792 rows (one per rover epoch), got 0
+E       assert 0 == 1792
+E        +  where 0 = len([])
+E        +  and   1792 = len([(2426, 272100.0), (2426, 272101.0), (2426, 272102.0), (2426, 272103.0), (2426, 272104.0), (2426, 272105.0), ...])
+
+test_state.py:126: AssertionError
+_________________________ test_overall_accuracy[alder] _________________________
+
+name = 'alder'
+
+    @pytest.mark.parametrize("name", SESSIONS)
+    def test_overall_accuracy(name):
+        """95th percentile of the 3-D error over all epochs (fixed and float) is at most 0.50 m."""
+>       m = graded(name)
+            ^^^^^^^^^^^^
+
+test_state.py:203: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+test_state.py:167: in graded
+    m = score_solution(rows, epochs, truth[:, 2:5])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+rows = [['gps_week', 'tow', 'x', 'y', 'z', 'status']]
+epochs = [(2415, 286200.0), (2415, 286201.0), (2415, 286202.0), (2415, 286203.0), (2415, 286204.0), (2415, 286205.0), ...]
+truth_xyz = array([[4288487.9715,  639946.1553, 4662517.3116],
+       [4288479.6191,  639952.038 , 4662524.1242],
+       [4288471...., 4668502.5016],
+       [4280369.6241,  650228.6446, 4668501.9869],
+       [4280368.1298,  650239.9534, 4668501.758 ]])
+
+    def score_solution(rows, epochs, truth_xyz):
+        """Validate a parsed solution.csv against the rover epochs and score it.
+    
+        rows: list of CSV rows (header first); epochs: [(gps_week, tow)] of the
+        rover file; truth_xyz: (n, 3) true antenna positions. Raises
+        AssertionError on a format violation, otherwise returns the metrics.
+        """
+        assert rows and [c.strip() for c in rows[0]] == HEADER, f"header must be {','.join(HEADER)}"
+        body = rows[1:]
+>       assert len(body) == len(epochs), f"expected {len(epochs)} rows (one per rover epoch), got {len(body)}"
+E       AssertionError: expected 1789 rows (one per rover epoch), got 0
+E       assert 0 == 1789
+E        +  where 0 = len([])
+E        +  and   1789 = len([(2415, 286200.0), (2415, 286201.0), (2415, 286202.0), (2415, 286203.0), (2415, 286204.0), (2415, 286205.0), ...])
+
+test_state.py:126: AssertionError
+________________________ test_overall_accuracy[basalt] _________________________
+
+name = 'basalt'
+
+    @pytest.mark.parametrize("name", SESSIONS)
+    def test_overall_accuracy(name):
+        """95th percentile of the 3-D error over all epochs (fixed and float) is at most 0.50 m."""
+>       m = graded(name)
+            ^^^^^^^^^^^^
+
+test_state.py:203: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+test_state.py:167: in graded
+    m = score_solution(rows, epochs, truth[:, 2:5])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+rows = [['gps_week', 'tow', 'x', 'y', 'z', 'status']]
+epochs = [(2418, 267300.0), (2418, 267301.0), (2418, 267302.0), (2418, 267303.0), (2418, 267304.0), (2418, 267305.0), ...]
+truth_xyz = array([[-4645191.8964,  2557107.2207, -3532799.7926],
+       [-4645186.824 ,  2557103.9933, -3532808.7491],
+       [-4...535.7342],
+       [-4637463.1305,  2556198.0293, -3543543.5429],
+       [-4637456.9242,  2556198.2813, -3543551.4083]])
+
+    def score_solution(rows, epochs, truth_xyz):
+        """Validate a parsed solution.csv against the rover epochs and score it.
+    
+        rows: list of CSV rows (header first); epochs: [(gps_week, tow)] of the
+        rover file; truth_xyz: (n, 3) true antenna positions. Raises
+        AssertionError on a format violation, otherwise returns the metrics.
+        """
+        assert rows and [c.strip() for c in rows[0]] == HEADER, f"header must be {','.join(HEADER)}"
+        body = rows[1:]
+>       assert len(body) == len(epochs), f"expected {len(epochs)} rows (one per rover epoch), got {len(body)}"
+E       AssertionError: expected 1793 rows (one per rover epoch), got 0
+E       assert 0 == 1793
+E        +  where 0 = len([])
+E        +  and   1793 = len([(2418, 267300.0), (2418, 267301.0), (2418, 267302.0), (2418, 267303.0), (2418, 267304.0), (2418, 267305.0), ...])
+
+test_state.py:126: AssertionError
+_________________________ test_overall_accuracy[cedar] _________________________
+
+name = 'cedar'
+
+    @pytest.mark.parametrize("name", SESSIONS)
+    def test_overall_accuracy(name):
+        """95th percentile of the 3-D error over all epochs (fixed and float) is at most 0.50 m."""
+>       m = graded(name)
+            ^^^^^^^^^^^^
+
+test_state.py:203: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+test_state.py:167: in graded
+    m = score_solution(rows, epochs, truth[:, 2:5])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+rows = [['gps_week', 'tow', 'x', 'y', 'z', 'status']]
+epochs = [(2423, 305100.0), (2423, 305101.0), (2423, 305102.0), (2423, 305103.0), (2423, 305104.0), (2423, 305105.0), ...]
+truth_xyz = array([[3922784.0216,  314051.553 , 5002557.373 ],
+       [3922791.4161,  314039.5612, 5002552.3392],
+       [3922798...., 4993786.6505],
+       [3934927.8462,  302640.1126, 4993778.0377],
+       [3934938.4229,  302643.2578, 4993769.5738]])
+
+    def score_solution(rows, epochs, truth_xyz):
+        """Validate a parsed solution.csv against the rover epochs and score it.
+    
+        rows: list of CSV rows (header first); epochs: [(gps_week, tow)] of the
+        rover file; truth_xyz: (n, 3) true antenna positions. Raises
+        AssertionError on a format violation, otherwise returns the metrics.
+        """
+        assert rows and [c.strip() for c in rows[0]] == HEADER, f"header must be {','.join(HEADER)}"
+        body = rows[1:]
+>       assert len(body) == len(epochs), f"expected {len(epochs)} rows (one per rover epoch), got {len(body)}"
+E       AssertionError: expected 1790 rows (one per rover epoch), got 0
+E       assert 0 == 1790
+E        +  where 0 = len([])
+E        +  and   1790 = len([(2423, 305100.0), (2423, 305101.0), (2423, 305102.0), (2423, 305103.0), (2423, 305104.0), (2423, 305105.0), ...])
+
+test_state.py:126: AssertionError
+_________________________ test_overall_accuracy[dune] __________________________
+
+name = 'dune'
+
+    @pytest.mark.parametrize("name", SESSIONS)
+    def test_overall_accuracy(name):
+        """95th percentile of the 3-D error over all epochs (fixed and float) is at most 0.50 m."""
+>       m = graded(name)
+            ^^^^^^^^^^^^
+
+test_state.py:203: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+test_state.py:167: in graded
+    m = score_solution(rows, epochs, truth[:, 2:5])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+rows = [['gps_week', 'tow', 'x', 'y', 'z', 'status']]
+epochs = [(2426, 272100.0), (2426, 272101.0), (2426, 272102.0), (2426, 272103.0), (2426, 272104.0), (2426, 272105.0), ...]
+truth_xyz = array([[-3961595.14  ,  3356586.5731,  3691679.5697],
+       [-3961595.2631,  3356595.977 ,  3691670.9835],
+       [-3...535.4734],
+       [-3958332.908 ,  3371691.8692,  3681534.9561],
+       [-3958325.5139,  3371701.0938,  3681534.443 ]])
+
+    def score_solution(rows, epochs, truth_xyz):
+        """Validate a parsed solution.csv against the rover epochs and score it.
+    
+        rows: list of CSV rows (header first); epochs: [(gps_week, tow)] of the
+        rover file; truth_xyz: (n, 3) true antenna positions. Raises
+        AssertionError on a format violation, otherwise returns the metrics.
+        """
+        assert rows and [c.strip() for c in rows[0]] == HEADER, f"header must be {','.join(HEADER)}"
+        body = rows[1:]
+>       assert len(body) == len(epochs), f"expected {len(epochs)} rows (one per rover epoch), got {len(body)}"
+E       AssertionError: expected 1792 rows (one per rover epoch), got 0
+E       assert 0 == 1792
+E        +  where 0 = len([])
+E        +  and   1792 = len([(2426, 272100.0), (2426, 272101.0), (2426, 272102.0), (2426, 272103.0), (2426, 272104.0), (2426, 272105.0), ...])
+
+test_state.py:126: AssertionError
+=========================== short test summary info ============================
+FAILED test_state.py::test_solution_format[alder] - AssertionError: expected ...
+FAILED test_state.py::test_solution_format[basalt] - AssertionError: expected...
+FAILED test_state.py::test_solution_format[cedar] - AssertionError: expected ...
+FAILED test_state.py::test_solution_format[dune] - AssertionError: expected 1...
+FAILED test_state.py::test_fix_rate[alder] - AssertionError: expected 1789 ro...
+FAILED test_state.py::test_fix_rate[basalt] - AssertionError: expected 1793 r...
+FAILED test_state.py::test_fix_rate[cedar] - AssertionError: expected 1790 ro...
+FAILED test_state.py::test_fix_rate[dune] - AssertionError: expected 1792 row...
+FAILED test_state.py::test_fixed_integrity[alder] - AssertionError: expected ...
+FAILED test_state.py::test_fixed_integrity[basalt] - AssertionError: expected...
+FAILED test_state.py::test_fixed_integrity[cedar] - AssertionError: expected ...
+FAILED test_state.py::test_fixed_integrity[dune] - AssertionError: expected 1...
+FAILED test_state.py::test_fixed_precision[alder] - AssertionError: expected ...
+FAILED test_state.py::test_fixed_precision[basalt] - AssertionError: expected...
+FAILED test_state.py::test_fixed_precision[cedar] - AssertionError: expected ...
+FAILED test_state.py::test_fixed_precision[dune] - AssertionError: expected 1...
+FAILED test_state.py::test_overall_accuracy[alder] - AssertionError: expected...
+FAILED test_state.py::test_overall_accuracy[basalt] - AssertionError: expecte...
+FAILED test_state.py::test_overall_accuracy[cedar] - AssertionError: expected...
+FAILED test_state.py::test_overall_accuracy[dune] - AssertionError: expected ...
+============================= 20 failed in 21.80s ==============================
