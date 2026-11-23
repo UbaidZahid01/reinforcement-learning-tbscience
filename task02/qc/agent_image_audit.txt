@@ -1,0 +1,32 @@
+# agent image: files the task adds (outside pip)
+/root/.bashrc
+/root/.profile
+/root/data/development/set_3/file_a.csv
+/root/data/development/set_3/true_coefficients.json
+/root/data/development/set_3/file_b.csv
+/root/data/development/set_2/file_a.csv
+/root/data/development/set_2/true_coefficients.json
+/root/data/development/set_2/file_b.csv
+/root/data/development/set_4/file_a.csv
+/root/data/development/set_4/true_coefficients.json
+/root/data/development/set_4/file_b.csv
+/root/data/development/set_1/file_a.csv
+/root/data/development/set_1/true_coefficients.json
+/root/data/development/set_1/file_b.csv
+/root/.wget-hsts
+find: ‘/tests’: No such file or directory
+find: ‘/solution’: No such file or directory
+find: ‘/logs’: No such file or directory
+# canaries of hidden material, whole filesystem
+ModuleNotFoundError: No module named 'pytest'
+# layers
+4.1kB WORKDIR /root
+8.19kB RUN /bin/sh -c cd /root/data     && sha256sum -c /root/input_checksums.sha256     && rm -f /root/input_checksums.sha256 # buildkit
+12.3kB COPY input_checksums.sha256 /root/input_checksums.sha256 # buildkit
+160kB COPY data/ /root/data/ # buildkit
+16.4kB RUN /bin/sh -c mkdir -p /root/data /root/results # buildkit
+320MB RUN /bin/sh -c pip install --no-cache-dir     numpy==1.26.4     scipy==1.13.1     pandas==2.2.2 # buildkit
+0B CMD ["python3"]
+16.4kB RUN /bin/sh -c set -eux;  for src in idle3 pip3 pydoc3 python3 python3-config; do   dst="$(echo "$src" | tr -d 3)";   [ -s "/usr/local/bin/$src" ];   [ ! -e "/usr/local/bin/$dst" ];   ln -svT "
+# any hidden dataset equal to a development file?
+      8 0
