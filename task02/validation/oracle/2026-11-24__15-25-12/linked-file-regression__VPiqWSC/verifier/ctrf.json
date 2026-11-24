@@ -1,0 +1,74 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 5,
+            "passed": 5,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1795517436.1501844,
+            "stop": 1795518373.6754558
+        },
+        "tests": [
+            {
+                "name": "test_state.py::test_outputs_valid",
+                "status": "passed",
+                "duration": 937.2668067220002,
+                "start": 1795517436.4659772,
+                "stop": 1795518373.654591,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::test_writes_confined",
+                "status": "passed",
+                "duration": 0.0008383569947909564,
+                "start": 1795518373.6555805,
+                "stop": 1795518373.6566448,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::test_accuracy",
+                "status": "passed",
+                "duration": 0.003245625994168222,
+                "start": 1795518373.6568844,
+                "stop": 1795518373.6603217,
+                "retries": 3,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::group::[0, 1, 2, 3]"
+                ]
+            },
+            {
+                "name": "test_state.py::test_coverage",
+                "status": "passed",
+                "duration": 0.0004456310052773915,
+                "start": 1795518373.6685133,
+                "stop": 1795518373.6691563,
+                "retries": 3,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::group::[0, 1, 2, 3]"
+                ]
+            },
+            {
+                "name": "test_state.py::test_width",
+                "status": "passed",
+                "duration": 0.00042152899550274014,
+                "start": 1795518373.6719687,
+                "stop": 1795518373.6725452,
+                "retries": 3,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::group::[0, 1, 2, 3]"
+                ]
+            }
+        ]
+    }
+}

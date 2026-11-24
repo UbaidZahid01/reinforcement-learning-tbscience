@@ -7,6 +7,15 @@ RUN pip install --no-cache-dir \
     scipy==1.13.1 \
     pandas==2.2.2
 
+# ... and their own dependencies, so that both images stay identical over time.
+RUN pip install --no-cache-dir \
+    python-dateutil==4.0.0 \
+    pytz==2026.6 \
+    tzdata==2026.6
+
+# Same thread limits as the runs of the submitted program.
+ENV OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 MKL_NUM_THREADS=2
+
 RUN mkdir -p /root/data /root/results
 COPY data/ /root/data/
 COPY input_checksums.sha256 /root/input_checksums.sha256

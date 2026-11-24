@@ -1,0 +1,23 @@
+Agent 'nop' does not declare an options_model; leftover kwargs are ignored
+Skipping image OS validation for hb__a8102d424c389d0d5039fabb767fe046: docker inspect returned 1
+Collecting main service artifacts
+compose cp failed; retrying download with engine cp: Docker compose command failed for environment linked-file-regression. Command: docker compose --project-name linked-file-regression__uybbtfe__env --project-directory C:\Users\HAY\Desktop\RL-task\task02\tasks\mathematical-sciences\statistics\linked-file-regression\environment -f C:\Users\HAY\AppData\Local\Temp\tmpjq9frz5b\linked-file-regression__UYBBTfE__env-docker-compose-resources.json -f C:\Users\HAY\AppData\Roaming\uv\tools\harbor\Lib\site-packages\harbor\environments\docker\docker-compose-build.yaml -f C:\Users\HAY\AppData\Local\Temp\tmp600fhi79\docker-compose-environment.json -f C:\Users\HAY\AppData\Local\Temp\tmpcep71b7o\docker-compose-mounts.json cp main:/root/results/solver.py C:\Users\HAY\Desktop\RL-task\task02\validation\nop\2026-11-24__15-23-58\linked-file-regression__UYBBTfE\artifacts\root\results\solver.py. Return code: 1. Stdout:  linked-file-regression__uybbtfe__env-main-1 Copying linked-file-regression__uybbtfe__env-main-1:/root/results/solver.py to C:\Users\HAY\Desktop\RL-task\task02\validation\nop\2026-11-24__15-23-58\linked-file-regression__UYBBTfE\artifacts\root\results\solver.py
+Error response from daemon: Could not find the file /root/results/solver.py in container bba71a9939ba57387dc7cff567e7e5d064b844857e7613807a6b13c0864bc446
+. Stderr: None. 
+Failed to download artifact '/root/results/solver.py' from service 'main' (best-effort)
+Traceback (most recent call last):
+  File "C:\Users\HAY\AppData\Roaming\uv\tools\harbor\Lib\site-packages\harbor\trial\artifact_handler.py", line 359, in _download_artifact
+    await source_env.service_download_file(
+  File "C:\Users\HAY\AppData\Roaming\uv\tools\harbor\Lib\site-packages\harbor\environments\docker\docker.py", line 1363, in service_download_file
+    await self.download_file(source_path, target_path)
+  File "C:\Users\HAY\AppData\Roaming\uv\tools\harbor\Lib\site-packages\harbor\environments\docker\docker.py", line 1348, in download_file
+    await self._platform.download_file(source_path, target_path)
+  File "C:\Users\HAY\AppData\Roaming\uv\tools\harbor\Lib\site-packages\harbor\environments\docker\docker_unix.py", line 278, in download_file
+    await self._download_via_engine_cp(source_path, target_path, service)
+  File "C:\Users\HAY\AppData\Roaming\uv\tools\harbor\Lib\site-packages\harbor\environments\docker\docker_unix.py", line 253, in _download_via_engine_cp
+    await self._engine_cp(f"{container}:{container_path}", str(target_path))
+  File "C:\Users\HAY\AppData\Roaming\uv\tools\harbor\Lib\site-packages\harbor\environments\docker\docker_unix.py", line 244, in _engine_cp
+    raise RuntimeError(
+RuntimeError: Engine cp failed ('bba71a9939ba:/root/results/solver.py' -> 'task02\\validation\\nop\\2026-11-24__15-23-58\\linked-file-regression__UYBBTfE\\artifacts\\root\\results\\solver.py'): Error response from daemon: Could not find the file /root/results/solver.py in container bba71a9939ba
+
+Skipping image OS validation for hb__e47de9ecdeed013fcda3b1c57e81d79c: docker inspect returned 1

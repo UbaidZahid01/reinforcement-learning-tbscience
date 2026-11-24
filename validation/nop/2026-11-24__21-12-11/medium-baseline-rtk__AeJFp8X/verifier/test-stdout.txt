@@ -1,0 +1,611 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.16, pytest-8.4.1, pluggy-1.7.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 24 items
+
+test_state.py FFFFFFFFFFFFFFFFFFFFFFFF                                   [100%]
+
+=================================== FAILURES ===================================
+________________________ TestAlder.test_solution_format ________________________
+
+self = <test_state.TestAlder object at 0x70b28815c0e0>
+
+    def test_solution_format(self):
+        """solution.csv exists, has the documented header, one row per rover epoch in order, finite values."""
+>       graded(self.name)
+
+test_state.py:237: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'alder'
+
+    @lru_cache(maxsize=None)
+    def graded(name: str):
+        """Run, parse and score one hidden session (AssertionError on format failure)."""
+        status, rows, _ = run_session(name)
+>       assert status == "ok", rows
+E       AssertionError: /root/results/solver.py missing or not a regular file
+E       assert 'error' == 'ok'
+E         
+E         - ok
+E         + error
+
+test_state.py:219: AssertionError
+________________________ TestAlder.test_writes_confined ________________________
+
+self = <test_state.TestAlder object at 0x70b28b2bcf50>
+
+    def test_writes_confined(self):
+        """The run succeeds and leaves no file or directory anywhere outside its output directory."""
+        status, rows, outside = run_session(self.name)
+>       assert status == "ok", rows
+E       AssertionError: /root/results/solver.py missing or not a regular file
+E       assert 'error' == 'ok'
+E         
+E         - ok
+E         + error
+
+test_state.py:242: AssertionError
+___________________________ TestAlder.test_fix_rate ____________________________
+
+self = <test_state.TestAlder object at 0x70b28b2e4f20>
+
+    def test_fix_rate(self):
+        """At least 75% of the rover epochs carry an integer-fixed solution."""
+>       m = graded(self.name)
+            ^^^^^^^^^^^^^^^^^
+
+test_state.py:247: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'alder'
+
+    @lru_cache(maxsize=None)
+    def graded(name: str):
+        """Run, parse and score one hidden session (AssertionError on format failure)."""
+        status, rows, _ = run_session(name)
+>       assert status == "ok", rows
+E       AssertionError: /root/results/solver.py missing or not a regular file
+E       assert 'error' == 'ok'
+E         
+E         - ok
+E         + error
+
+test_state.py:219: AssertionError
+________________________ TestAlder.test_fixed_integrity ________________________
+
+self = <test_state.TestAlder object at 0x70b28191e930>
+
+    def test_fixed_integrity(self):
+        """At most 1% of fixed epochs lie more than 0.10 m (3-D) from the true rover position."""
+>       m = graded(self.name)
+            ^^^^^^^^^^^^^^^^^
+
+test_state.py:252: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'alder'
+
+    @lru_cache(maxsize=None)
+    def graded(name: str):
+        """Run, parse and score one hidden session (AssertionError on format failure)."""
+        status, rows, _ = run_session(name)
+>       assert status == "ok", rows
+E       AssertionError: /root/results/solver.py missing or not a regular file
+E       assert 'error' == 'ok'
+E         
+E         - ok
+E         + error
+
+test_state.py:219: AssertionError
+________________________ TestAlder.test_fixed_precision ________________________
+
+self = <test_state.TestAlder object at 0x70b28191ea80>
+
+    def test_fixed_precision(self):
+        """Median 3-D error of the fixed epochs is at most 0.04 m."""
+>       m = graded(self.name)
+            ^^^^^^^^^^^^^^^^^
+
+test_state.py:257: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'alder'
+
+    @lru_cache(maxsize=None)
+    def graded(name: str):
+        """Run, parse and score one hidden session (AssertionError on format failure)."""
+        status, rows, _ = run_session(name)
+>       assert status == "ok", rows
+E       AssertionError: /root/results/solver.py missing or not a regular file
+E       assert 'error' == 'ok'
+E         
+E         - ok
+E         + error
+
+test_state.py:219: AssertionError
+_______________________ TestAlder.test_overall_accuracy ________________________
+
+self = <test_state.TestAlder object at 0x70b28191eb70>
+
+    def test_overall_accuracy(self):
+        """95th percentile of the 3-D error over all epochs (fixed and float) is at most 0.50 m."""
+>       m = graded(self.name)
+            ^^^^^^^^^^^^^^^^^
+
+test_state.py:262: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'alder'
+
+    @lru_cache(maxsize=None)
+    def graded(name: str):
+        """Run, parse and score one hidden session (AssertionError on format failure)."""
+        status, rows, _ = run_session(name)
+>       assert status == "ok", rows
+E       AssertionError: /root/results/solver.py missing or not a regular file
+E       assert 'error' == 'ok'
+E         
+E         - ok
+E         + error
+
+test_state.py:219: AssertionError
+_______________________ TestBasalt.test_solution_format ________________________
+
+self = <test_state.TestBasalt object at 0x70b28b2e6c30>
+
+    def test_solution_format(self):
+        """solution.csv exists, has the documented header, one row per rover epoch in order, finite values."""
+>       graded(self.name)
+
+test_state.py:237: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'basalt'
+
+    @lru_cache(maxsize=None)
+    def graded(name: str):
+        """Run, parse and score one hidden session (AssertionError on format failure)."""
+        status, rows, _ = run_session(name)
+>       assert status == "ok", rows
+E       AssertionError: /root/results/solver.py missing or not a regular file
+E       assert 'error' == 'ok'
+E         
+E         - ok
+E         + error
+
+test_state.py:219: AssertionError
+_______________________ TestBasalt.test_writes_confined ________________________
+
+self = <test_state.TestBasalt object at 0x70b28191ea50>
+
+    def test_writes_confined(self):
+        """The run succeeds and leaves no file or directory anywhere outside its output directory."""
+        status, rows, outside = run_session(self.name)
+>       assert status == "ok", rows
+E       AssertionError: /root/results/solver.py missing or not a regular file
+E       assert 'error' == 'ok'
+E         
+E         - ok
+E         + error
+
+test_state.py:242: AssertionError
+___________________________ TestBasalt.test_fix_rate ___________________________
+
+self = <test_state.TestBasalt object at 0x70b28191ed50>
+
+    def test_fix_rate(self):
+        """At least 75% of the rover epochs carry an integer-fixed solution."""
+>       m = graded(self.name)
+            ^^^^^^^^^^^^^^^^^
+
+test_state.py:247: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'basalt'
+
+    @lru_cache(maxsize=None)
+    def graded(name: str):
+        """Run, parse and score one hidden session (AssertionError on format failure)."""
+        status, rows, _ = run_session(name)
+>       assert status == "ok", rows
+E       AssertionError: /root/results/solver.py missing or not a regular file
+E       assert 'error' == 'ok'
+E         
+E         - ok
+E         + error
+
+test_state.py:219: AssertionError
+_______________________ TestBasalt.test_fixed_integrity ________________________
+
+self = <test_state.TestBasalt object at 0x70b28191eea0>
+
+    def test_fixed_integrity(self):
+        """At most 1% of fixed epochs lie more than 0.10 m (3-D) from the true rover position."""
+>       m = graded(self.name)
+            ^^^^^^^^^^^^^^^^^
+
+test_state.py:252: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'basalt'
+
+    @lru_cache(maxsize=None)
+    def graded(name: str):
+        """Run, parse and score one hidden session (AssertionError on format failure)."""
+        status, rows, _ = run_session(name)
+>       assert status == "ok", rows
+E       AssertionError: /root/results/solver.py missing or not a regular file
+E       assert 'error' == 'ok'
+E         
+E         - ok
+E         + error
+
+test_state.py:219: AssertionError
+_______________________ TestBasalt.test_fixed_precision ________________________
+
+self = <test_state.TestBasalt object at 0x70b28191eff0>
+
+    def test_fixed_precision(self):
+        """Median 3-D error of the fixed epochs is at most 0.04 m."""
+>       m = graded(self.name)
+            ^^^^^^^^^^^^^^^^^
+
+test_state.py:257: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'basalt'
+
+    @lru_cache(maxsize=None)
+    def graded(name: str):
+        """Run, parse and score one hidden session (AssertionError on format failure)."""
+        status, rows, _ = run_session(name)
+>       assert status == "ok", rows
+E       AssertionError: /root/results/solver.py missing or not a regular file
+E       assert 'error' == 'ok'
+E         
+E         - ok
+E         + error
+
+test_state.py:219: AssertionError
+_______________________ TestBasalt.test_overall_accuracy _______________________
+
+self = <test_state.TestBasalt object at 0x70b28191f140>
+
+    def test_overall_accuracy(self):
+        """95th percentile of the 3-D error over all epochs (fixed and float) is at most 0.50 m."""
+>       m = graded(self.name)
+            ^^^^^^^^^^^^^^^^^
+
+test_state.py:262: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'basalt'
+
+    @lru_cache(maxsize=None)
+    def graded(name: str):
+        """Run, parse and score one hidden session (AssertionError on format failure)."""
+        status, rows, _ = run_session(name)
+>       assert status == "ok", rows
+E       AssertionError: /root/results/solver.py missing or not a regular file
+E       assert 'error' == 'ok'
+E         
+E         - ok
+E         + error
+
+test_state.py:219: AssertionError
+________________________ TestCedar.test_solution_format ________________________
+
+self = <test_state.TestCedar object at 0x70b28191f350>
+
+    def test_solution_format(self):
+        """solution.csv exists, has the documented header, one row per rover epoch in order, finite values."""
+>       graded(self.name)
+
+test_state.py:237: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'cedar'
+
+    @lru_cache(maxsize=None)
+    def graded(name: str):
+        """Run, parse and score one hidden session (AssertionError on format failure)."""
+        status, rows, _ = run_session(name)
+>       assert status == "ok", rows
+E       AssertionError: /root/results/solver.py missing or not a regular file
+E       assert 'error' == 'ok'
+E         
+E         - ok
+E         + error
+
+test_state.py:219: AssertionError
+________________________ TestCedar.test_writes_confined ________________________
+
+self = <test_state.TestCedar object at 0x70b28191f500>
+
+    def test_writes_confined(self):
+        """The run succeeds and leaves no file or directory anywhere outside its output directory."""
+        status, rows, outside = run_session(self.name)
+>       assert status == "ok", rows
+E       AssertionError: /root/results/solver.py missing or not a regular file
+E       assert 'error' == 'ok'
+E         
+E         - ok
+E         + error
+
+test_state.py:242: AssertionError
+___________________________ TestCedar.test_fix_rate ____________________________
+
+self = <test_state.TestCedar object at 0x70b28191f6b0>
+
+    def test_fix_rate(self):
+        """At least 75% of the rover epochs carry an integer-fixed solution."""
+>       m = graded(self.name)
+            ^^^^^^^^^^^^^^^^^
+
+test_state.py:247: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'cedar'
+
+    @lru_cache(maxsize=None)
+    def graded(name: str):
+        """Run, parse and score one hidden session (AssertionError on format failure)."""
+        status, rows, _ = run_session(name)
+>       assert status == "ok", rows
+E       AssertionError: /root/results/solver.py missing or not a regular file
+E       assert 'error' == 'ok'
+E         
+E         - ok
+E         + error
+
+test_state.py:219: AssertionError
+________________________ TestCedar.test_fixed_integrity ________________________
+
+self = <test_state.TestCedar object at 0x70b28191f860>
+
+    def test_fixed_integrity(self):
+        """At most 1% of fixed epochs lie more than 0.10 m (3-D) from the true rover position."""
+>       m = graded(self.name)
+            ^^^^^^^^^^^^^^^^^
+
+test_state.py:252: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'cedar'
+
+    @lru_cache(maxsize=None)
+    def graded(name: str):
+        """Run, parse and score one hidden session (AssertionError on format failure)."""
+        status, rows, _ = run_session(name)
+>       assert status == "ok", rows
+E       AssertionError: /root/results/solver.py missing or not a regular file
+E       assert 'error' == 'ok'
+E         
+E         - ok
+E         + error
+
+test_state.py:219: AssertionError
+________________________ TestCedar.test_fixed_precision ________________________
+
+self = <test_state.TestCedar object at 0x70b28191fa10>
+
+    def test_fixed_precision(self):
+        """Median 3-D error of the fixed epochs is at most 0.04 m."""
+>       m = graded(self.name)
+            ^^^^^^^^^^^^^^^^^
+
+test_state.py:257: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'cedar'
+
+    @lru_cache(maxsize=None)
+    def graded(name: str):
+        """Run, parse and score one hidden session (AssertionError on format failure)."""
+        status, rows, _ = run_session(name)
+>       assert status == "ok", rows
+E       AssertionError: /root/results/solver.py missing or not a regular file
+E       assert 'error' == 'ok'
+E         
+E         - ok
+E         + error
+
+test_state.py:219: AssertionError
+_______________________ TestCedar.test_overall_accuracy ________________________
+
+self = <test_state.TestCedar object at 0x70b28191fbc0>
+
+    def test_overall_accuracy(self):
+        """95th percentile of the 3-D error over all epochs (fixed and float) is at most 0.50 m."""
+>       m = graded(self.name)
+            ^^^^^^^^^^^^^^^^^
+
+test_state.py:262: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'cedar'
+
+    @lru_cache(maxsize=None)
+    def graded(name: str):
+        """Run, parse and score one hidden session (AssertionError on format failure)."""
+        status, rows, _ = run_session(name)
+>       assert status == "ok", rows
+E       AssertionError: /root/results/solver.py missing or not a regular file
+E       assert 'error' == 'ok'
+E         
+E         - ok
+E         + error
+
+test_state.py:219: AssertionError
+________________________ TestDune.test_solution_format _________________________
+
+self = <test_state.TestDune object at 0x70b28191fcb0>
+
+    def test_solution_format(self):
+        """solution.csv exists, has the documented header, one row per rover epoch in order, finite values."""
+>       graded(self.name)
+
+test_state.py:237: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'dune'
+
+    @lru_cache(maxsize=None)
+    def graded(name: str):
+        """Run, parse and score one hidden session (AssertionError on format failure)."""
+        status, rows, _ = run_session(name)
+>       assert status == "ok", rows
+E       AssertionError: /root/results/solver.py missing or not a regular file
+E       assert 'error' == 'ok'
+E         
+E         - ok
+E         + error
+
+test_state.py:219: AssertionError
+________________________ TestDune.test_writes_confined _________________________
+
+self = <test_state.TestDune object at 0x70b28191ff50>
+
+    def test_writes_confined(self):
+        """The run succeeds and leaves no file or directory anywhere outside its output directory."""
+        status, rows, outside = run_session(self.name)
+>       assert status == "ok", rows
+E       AssertionError: /root/results/solver.py missing or not a regular file
+E       assert 'error' == 'ok'
+E         
+E         - ok
+E         + error
+
+test_state.py:242: AssertionError
+____________________________ TestDune.test_fix_rate ____________________________
+
+self = <test_state.TestDune object at 0x70b281950140>
+
+    def test_fix_rate(self):
+        """At least 75% of the rover epochs carry an integer-fixed solution."""
+>       m = graded(self.name)
+            ^^^^^^^^^^^^^^^^^
+
+test_state.py:247: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'dune'
+
+    @lru_cache(maxsize=None)
+    def graded(name: str):
+        """Run, parse and score one hidden session (AssertionError on format failure)."""
+        status, rows, _ = run_session(name)
+>       assert status == "ok", rows
+E       AssertionError: /root/results/solver.py missing or not a regular file
+E       assert 'error' == 'ok'
+E         
+E         - ok
+E         + error
+
+test_state.py:219: AssertionError
+________________________ TestDune.test_fixed_integrity _________________________
+
+self = <test_state.TestDune object at 0x70b2819502f0>
+
+    def test_fixed_integrity(self):
+        """At most 1% of fixed epochs lie more than 0.10 m (3-D) from the true rover position."""
+>       m = graded(self.name)
+            ^^^^^^^^^^^^^^^^^
+
+test_state.py:252: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'dune'
+
+    @lru_cache(maxsize=None)
+    def graded(name: str):
+        """Run, parse and score one hidden session (AssertionError on format failure)."""
+        status, rows, _ = run_session(name)
+>       assert status == "ok", rows
+E       AssertionError: /root/results/solver.py missing or not a regular file
+E       assert 'error' == 'ok'
+E         
+E         - ok
+E         + error
+
+test_state.py:219: AssertionError
+________________________ TestDune.test_fixed_precision _________________________
+
+self = <test_state.TestDune object at 0x70b2819504a0>
+
+    def test_fixed_precision(self):
+        """Median 3-D error of the fixed epochs is at most 0.04 m."""
+>       m = graded(self.name)
+            ^^^^^^^^^^^^^^^^^
+
+test_state.py:257: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'dune'
+
+    @lru_cache(maxsize=None)
+    def graded(name: str):
+        """Run, parse and score one hidden session (AssertionError on format failure)."""
+        status, rows, _ = run_session(name)
+>       assert status == "ok", rows
+E       AssertionError: /root/results/solver.py missing or not a regular file
+E       assert 'error' == 'ok'
+E         
+E         - ok
+E         + error
+
+test_state.py:219: AssertionError
+________________________ TestDune.test_overall_accuracy ________________________
+
+self = <test_state.TestDune object at 0x70b281950650>
+
+    def test_overall_accuracy(self):
+        """95th percentile of the 3-D error over all epochs (fixed and float) is at most 0.50 m."""
+>       m = graded(self.name)
+            ^^^^^^^^^^^^^^^^^
+
+test_state.py:262: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'dune'
+
+    @lru_cache(maxsize=None)
+    def graded(name: str):
+        """Run, parse and score one hidden session (AssertionError on format failure)."""
+        status, rows, _ = run_session(name)
+>       assert status == "ok", rows
+E       AssertionError: /root/results/solver.py missing or not a regular file
+E       assert 'error' == 'ok'
+E         
+E         - ok
+E         + error
+
+test_state.py:219: AssertionError
+=========================== short test summary info ============================
+FAILED test_state.py::TestAlder::test_solution_format - AssertionError: /root...
+FAILED test_state.py::TestAlder::test_writes_confined - AssertionError: /root...
+FAILED test_state.py::TestAlder::test_fix_rate - AssertionError: /root/result...
+FAILED test_state.py::TestAlder::test_fixed_integrity - AssertionError: /root...
+FAILED test_state.py::TestAlder::test_fixed_precision - AssertionError: /root...
+FAILED test_state.py::TestAlder::test_overall_accuracy - AssertionError: /roo...
+FAILED test_state.py::TestBasalt::test_solution_format - AssertionError: /roo...
+FAILED test_state.py::TestBasalt::test_writes_confined - AssertionError: /roo...
+FAILED test_state.py::TestBasalt::test_fix_rate - AssertionError: /root/resul...
+FAILED test_state.py::TestBasalt::test_fixed_integrity - AssertionError: /roo...
+FAILED test_state.py::TestBasalt::test_fixed_precision - AssertionError: /roo...
+FAILED test_state.py::TestBasalt::test_overall_accuracy - AssertionError: /ro...
+FAILED test_state.py::TestCedar::test_solution_format - AssertionError: /root...
+FAILED test_state.py::TestCedar::test_writes_confined - AssertionError: /root...
+FAILED test_state.py::TestCedar::test_fix_rate - AssertionError: /root/result...
+FAILED test_state.py::TestCedar::test_fixed_integrity - AssertionError: /root...
+FAILED test_state.py::TestCedar::test_fixed_precision - AssertionError: /root...
+FAILED test_state.py::TestCedar::test_overall_accuracy - AssertionError: /roo...
+FAILED test_state.py::TestDune::test_solution_format - AssertionError: /root/...
+FAILED test_state.py::TestDune::test_writes_confined - AssertionError: /root/...
+FAILED test_state.py::TestDune::test_fix_rate - AssertionError: /root/results...
+FAILED test_state.py::TestDune::test_fixed_integrity - AssertionError: /root/...
+FAILED test_state.py::TestDune::test_fixed_precision - AssertionError: /root/...
+FAILED test_state.py::TestDune::test_overall_accuracy - AssertionError: /root...
+============================== 24 failed in 2.84s ==============================

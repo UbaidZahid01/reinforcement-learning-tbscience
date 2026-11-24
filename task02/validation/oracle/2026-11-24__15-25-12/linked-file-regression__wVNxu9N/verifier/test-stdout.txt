@@ -1,0 +1,37 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.16, pytest-8.4.1, pluggy-1.7.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 14 items
+
+test_state.py ..............                                             [100%]
+
+==================================== PASSES ====================================
+_______________________________ test_accuracy[0] _______________________________
+----------------------------- Captured stdout call -----------------------------
+[group 0] rmse_ratio=1.2432 coverage=0.9750 width_ratio=1.1885
+_______________________________ test_accuracy[1] _______________________________
+----------------------------- Captured stdout call -----------------------------
+[group 1] rmse_ratio=1.1792 coverage=0.9750 width_ratio=1.2825
+_______________________________ test_accuracy[2] _______________________________
+----------------------------- Captured stdout call -----------------------------
+[group 2] rmse_ratio=1.3364 coverage=0.9250 width_ratio=1.3815
+_______________________________ test_accuracy[3] _______________________________
+----------------------------- Captured stdout call -----------------------------
+[group 3] rmse_ratio=1.2806 coverage=0.9583 width_ratio=1.3442
+=========================== short test summary info ============================
+PASSED test_state.py::test_outputs_valid
+PASSED test_state.py::test_writes_confined
+PASSED test_state.py::test_accuracy[0]
+PASSED test_state.py::test_accuracy[1]
+PASSED test_state.py::test_accuracy[2]
+PASSED test_state.py::test_accuracy[3]
+PASSED test_state.py::test_coverage[0]
+PASSED test_state.py::test_coverage[1]
+PASSED test_state.py::test_coverage[2]
+PASSED test_state.py::test_coverage[3]
+PASSED test_state.py::test_width[0]
+PASSED test_state.py::test_width[1]
+PASSED test_state.py::test_width[2]
+PASSED test_state.py::test_width[3]
+======================= 14 passed in 1391.60s (0:23:11) ========================

@@ -1,0 +1,23 @@
+Agent 'nop' does not declare an options_model; leftover kwargs are ignored
+Skipping image OS validation for hb__7604d3dc4dfa9c4357294f2092dcff08: docker inspect returned 1
+Collecting main service artifacts
+compose cp failed; retrying download with engine cp: Docker compose command failed for environment medium-baseline-rtk. Command: docker compose --project-name medium-baseline-rtk__2th32hf__env --project-directory C:\Users\HAY\Desktop\RL-task\tasks\earth-sciences\geosciences\medium-baseline-rtk\environment -f C:\Users\HAY\AppData\Local\Temp\tmpvygc0m33\medium-baseline-rtk__2TH32HF__env-docker-compose-resources.json -f C:\Users\HAY\AppData\Roaming\uv\tools\harbor\Lib\site-packages\harbor\environments\docker\docker-compose-build.yaml -f C:\Users\HAY\AppData\Local\Temp\tmpv9ivzopf\docker-compose-environment.json -f C:\Users\HAY\AppData\Local\Temp\tmpp8tub94p\docker-compose-mounts.json cp main:/root/results/solver.py C:\Users\HAY\Desktop\RL-task\validation\nop\2026-11-24__03-22-23\medium-baseline-rtk__2TH32HF\artifacts\root\results\solver.py. Return code: 1. Stdout:  medium-baseline-rtk__2th32hf__env-main-1 Copying medium-baseline-rtk__2th32hf__env-main-1:/root/results/solver.py to C:\Users\HAY\Desktop\RL-task\validation\nop\2026-11-24__03-22-23\medium-baseline-rtk__2TH32HF\artifacts\root\results\solver.py
+Error response from daemon: Could not find the file /root/results/solver.py in container 8eac53d81955d4c7f7e2f1bdfbb1f1236e47b6087357797891a9bbc9b0832340
+. Stderr: None. 
+Failed to download artifact '/root/results/solver.py' from service 'main' (best-effort)
+Traceback (most recent call last):
+  File "C:\Users\HAY\AppData\Roaming\uv\tools\harbor\Lib\site-packages\harbor\trial\artifact_handler.py", line 359, in _download_artifact
+    await source_env.service_download_file(
+  File "C:\Users\HAY\AppData\Roaming\uv\tools\harbor\Lib\site-packages\harbor\environments\docker\docker.py", line 1363, in service_download_file
+    await self.download_file(source_path, target_path)
+  File "C:\Users\HAY\AppData\Roaming\uv\tools\harbor\Lib\site-packages\harbor\environments\docker\docker.py", line 1348, in download_file
+    await self._platform.download_file(source_path, target_path)
+  File "C:\Users\HAY\AppData\Roaming\uv\tools\harbor\Lib\site-packages\harbor\environments\docker\docker_unix.py", line 278, in download_file
+    await self._download_via_engine_cp(source_path, target_path, service)
+  File "C:\Users\HAY\AppData\Roaming\uv\tools\harbor\Lib\site-packages\harbor\environments\docker\docker_unix.py", line 253, in _download_via_engine_cp
+    await self._engine_cp(f"{container}:{container_path}", str(target_path))
+  File "C:\Users\HAY\AppData\Roaming\uv\tools\harbor\Lib\site-packages\harbor\environments\docker\docker_unix.py", line 244, in _engine_cp
+    raise RuntimeError(
+RuntimeError: Engine cp failed ('8eac53d81955:/root/results/solver.py' -> 'validation\\nop\\2026-11-24__03-22-23\\medium-baseline-rtk__2TH32HF\\artifacts\\root\\results\\solver.py'): Error response from daemon: Could not find the file /root/results/solver.py in container 8eac53d81955
+
+Skipping image OS validation for hb__66531b67d497b990533f9bcacd589982: docker inspect returned 1

@@ -1,8 +1,9 @@
-Max similarity: 56% with 'local/engineering-sciences\electrical-engineering\navigation-sensor-calibration' (threshold: 80%)
+check-similarity.py method (TF-IDF 1-2-gram cosine) on the current instruction.md against 97 public tasks (tasks/ and lite/)
+Max similarity: 53% with 'engineering-sciences/electrical-engineering/navigation-sensor-calibration' (threshold: 80%)
 Similarity check passed
 Top-5 most similar public tasks:
-   56.8%  tasks\engineering-sciences\electrical-engineering\navigation-sensor-calibration
-   17.6%  tasks\life-sciences\neuroscience\eeg-erp-recovery
-   15.3%  tasks\engineering-sciences\electrical-engineering\nearfield-antenna-reduction
-   15.1%  tasks\physical-sciences\astronomy\cmb-cross-inference
-   13.3%  tasks\life-sciences\medicine\bloodculture-gram-call
+   53.4%  tasks/engineering-sciences/electrical-engineering/navigation-sensor-calibration
+   15.9%  tasks/life-sciences/neuroscience/eeg-erp-recovery
+   14.7%  tasks/physical-sciences/astronomy/cmb-cross-inference
+   13.9%  tasks/engineering-sciences/electrical-engineering/nearfield-antenna-reduction
+   13.8%  tasks/life-sciences/medicine/bloodculture-gram-call

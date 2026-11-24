@@ -25,8 +25,8 @@
 [0] check-verifier-resources.sh
 [0] check-verifier-tooling-baked.sh
 [0] check-binary-reward.py
-[0] check-similarity.py
-[0] check-verifier-output.py (validation/oracle)
-[0] check-verifier-output.py (validation/nop)
+[0] check-similarity.py (53.4% max, 97 public tasks; see similarity.txt)
+[0] check-verifier-output.py (validation/oracle/2026-11-24__21-13-36, current task)
+[0] check-verifier-output.py (validation/nop/2026-11-24__21-12-11, current task)
 [skip] check-ai-detection.py (needs GPTZERO_API_KEY)
 [skip] check-task-proposal-link.py (needs PR body with approved proposal)

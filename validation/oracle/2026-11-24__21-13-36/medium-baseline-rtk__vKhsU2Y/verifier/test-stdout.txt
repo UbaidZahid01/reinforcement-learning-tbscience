@@ -1,0 +1,59 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.16, pytest-8.4.1, pluggy-1.7.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 24 items
+
+test_state.py ........................                                   [100%]
+
+==================================== PASSES ====================================
+________________________ TestAlder.test_solution_format ________________________
+----------------------------- Captured stdout call -----------------------------
+[alder] solver exit=0
+stdout tail: 
+stderr tail: 
+[alder] epochs=1789 fix_rate=0.997 wrong_fix_frac=0.0006 fixed_median=0.0112 m p95_all=0.027 m
+_______________________ TestBasalt.test_solution_format ________________________
+----------------------------- Captured stdout call -----------------------------
+[basalt] solver exit=0
+stdout tail: 
+stderr tail: 
+[basalt] epochs=1793 fix_rate=0.998 wrong_fix_frac=0.0000 fixed_median=0.0153 m p95_all=0.029 m
+________________________ TestCedar.test_solution_format ________________________
+----------------------------- Captured stdout call -----------------------------
+[cedar] solver exit=0
+stdout tail: 
+stderr tail: 
+[cedar] epochs=1790 fix_rate=0.994 wrong_fix_frac=0.0000 fixed_median=0.0134 m p95_all=0.034 m
+________________________ TestDune.test_solution_format _________________________
+----------------------------- Captured stdout call -----------------------------
+[dune] solver exit=0
+stdout tail: 
+stderr tail: 
+[dune] epochs=1792 fix_rate=0.997 wrong_fix_frac=0.0000 fixed_median=0.0107 m p95_all=0.024 m
+=========================== short test summary info ============================
+PASSED test_state.py::TestAlder::test_solution_format
+PASSED test_state.py::TestAlder::test_writes_confined
+PASSED test_state.py::TestAlder::test_fix_rate
+PASSED test_state.py::TestAlder::test_fixed_integrity
+PASSED test_state.py::TestAlder::test_fixed_precision
+PASSED test_state.py::TestAlder::test_overall_accuracy
+PASSED test_state.py::TestBasalt::test_solution_format
+PASSED test_state.py::TestBasalt::test_writes_confined
+PASSED test_state.py::TestBasalt::test_fix_rate
+PASSED test_state.py::TestBasalt::test_fixed_integrity
+PASSED test_state.py::TestBasalt::test_fixed_precision
+PASSED test_state.py::TestBasalt::test_overall_accuracy
+PASSED test_state.py::TestCedar::test_solution_format
+PASSED test_state.py::TestCedar::test_writes_confined
+PASSED test_state.py::TestCedar::test_fix_rate
+PASSED test_state.py::TestCedar::test_fixed_integrity
+PASSED test_state.py::TestCedar::test_fixed_precision
+PASSED test_state.py::TestCedar::test_overall_accuracy
+PASSED test_state.py::TestDune::test_solution_format
+PASSED test_state.py::TestDune::test_writes_confined
+PASSED test_state.py::TestDune::test_fix_rate
+PASSED test_state.py::TestDune::test_fixed_integrity
+PASSED test_state.py::TestDune::test_fixed_precision
+PASSED test_state.py::TestDune::test_overall_accuracy
+======================== 24 passed in 129.67s (0:02:09) ========================

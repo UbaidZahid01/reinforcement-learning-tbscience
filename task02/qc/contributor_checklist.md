@@ -14,12 +14,14 @@
 | instruction | test |
 |---|---|
 | schema, four ordered terms, finite, low <= estimate <= high | `test_outputs_valid` |
-| every run succeeds, 180 s, offline, only listed libraries, writes only in OUTPUT_DIR | `test_outputs_valid` (enforced by the sandbox) |
+| every run succeeds with status 0, 180 s, at most 20 kB | `test_outputs_valid` |
+| writes only in OUTPUT_DIR | `test_writes_confined`; also prevented by the sandbox |
+| offline, CPU and memory, only listed libraries, 64 processes and threads, 10 MB files | enforced by the sandbox; a run that breaks them fails `test_outputs_valid` |
 | RMSE <= 1.7x reference, per group | `test_accuracy[0-3]` |
 | coverage >= 86%, per group | `test_coverage[0-3]` |
 | median width <= 1.6x reference, per group | `test_width[0-3]` |
 
-Note: the output must be under 20 kB and a run may start at most 64 processes; neither limit is in the instruction, as no reasonable solver meets them.
+Note: every limit the verifier applies is in the instruction.
 
 # B.2 LLM-check criteria, self-reviewed (not an independent run)
 

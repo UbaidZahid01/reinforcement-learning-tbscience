@@ -1,0 +1,59 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.16, pytest-8.4.1, pluggy-1.7.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 24 items
+
+test_state.py ........................                                   [100%]
+
+==================================== PASSES ====================================
+_________________________ test_solution_format[alder] __________________________
+----------------------------- Captured stdout call -----------------------------
+[alder] solver exit=0
+stdout tail: 
+stderr tail: 
+[alder] epochs=1789 fix_rate=0.997 wrong_fix_frac=0.0006 fixed_median=0.0114 m p95_all=0.026 m
+_________________________ test_solution_format[basalt] _________________________
+----------------------------- Captured stdout call -----------------------------
+[basalt] solver exit=0
+stdout tail: 
+stderr tail: 
+[basalt] epochs=1793 fix_rate=0.998 wrong_fix_frac=0.0000 fixed_median=0.0142 m p95_all=0.031 m
+_________________________ test_solution_format[cedar] __________________________
+----------------------------- Captured stdout call -----------------------------
+[cedar] solver exit=0
+stdout tail: 
+stderr tail: 
+[cedar] epochs=1790 fix_rate=0.966 wrong_fix_frac=0.0000 fixed_median=0.0149 m p95_all=0.047 m
+__________________________ test_solution_format[dune] __________________________
+----------------------------- Captured stdout call -----------------------------
+[dune] solver exit=0
+stdout tail: 
+stderr tail: 
+[dune] epochs=1792 fix_rate=0.995 wrong_fix_frac=0.0000 fixed_median=0.0111 m p95_all=0.027 m
+=========================== short test summary info ============================
+PASSED test_state.py::test_solution_format[alder]
+PASSED test_state.py::test_solution_format[basalt]
+PASSED test_state.py::test_solution_format[cedar]
+PASSED test_state.py::test_solution_format[dune]
+PASSED test_state.py::test_writes_confined[alder]
+PASSED test_state.py::test_writes_confined[basalt]
+PASSED test_state.py::test_writes_confined[cedar]
+PASSED test_state.py::test_writes_confined[dune]
+PASSED test_state.py::test_fix_rate[alder]
+PASSED test_state.py::test_fix_rate[basalt]
+PASSED test_state.py::test_fix_rate[cedar]
+PASSED test_state.py::test_fix_rate[dune]
+PASSED test_state.py::test_fixed_integrity[alder]
+PASSED test_state.py::test_fixed_integrity[basalt]
+PASSED test_state.py::test_fixed_integrity[cedar]
+PASSED test_state.py::test_fixed_integrity[dune]
+PASSED test_state.py::test_fixed_precision[alder]
+PASSED test_state.py::test_fixed_precision[basalt]
+PASSED test_state.py::test_fixed_precision[cedar]
+PASSED test_state.py::test_fixed_precision[dune]
+PASSED test_state.py::test_overall_accuracy[alder]
+PASSED test_state.py::test_overall_accuracy[basalt]
+PASSED test_state.py::test_overall_accuracy[cedar]
+PASSED test_state.py::test_overall_accuracy[dune]
+======================== 24 passed in 183.11s (0:03:03) ========================

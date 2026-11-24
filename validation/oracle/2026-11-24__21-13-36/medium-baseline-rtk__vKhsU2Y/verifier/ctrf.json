@@ -1,0 +1,236 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 24,
+            "passed": 24,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1795536898.9082391,
+            "stop": 1795537028.5642462
+        },
+        "tests": [
+            {
+                "name": "test_state.py::TestAlder::test_solution_format",
+                "status": "passed",
+                "duration": 33.62827775799815,
+                "start": 1795536899.3625028,
+                "stop": 1795536932.9855824,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::TestAlder::test_writes_confined",
+                "status": "passed",
+                "duration": 0.0008002609902177937,
+                "start": 1795536932.986052,
+                "stop": 1795536932.9871647,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::TestAlder::test_fix_rate",
+                "status": "passed",
+                "duration": 0.0006927520007593557,
+                "start": 1795536932.9875398,
+                "stop": 1795536932.9885633,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::TestAlder::test_fixed_integrity",
+                "status": "passed",
+                "duration": 0.0005531419956241734,
+                "start": 1795536932.988926,
+                "stop": 1795536932.9897006,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::TestAlder::test_fixed_precision",
+                "status": "passed",
+                "duration": 0.000559742002224084,
+                "start": 1795536932.9900122,
+                "stop": 1795536932.9908044,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::TestAlder::test_overall_accuracy",
+                "status": "passed",
+                "duration": 0.0004529329962679185,
+                "start": 1795536932.9910982,
+                "stop": 1795536932.9917321,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::TestBasalt::test_solution_format",
+                "status": "passed",
+                "duration": 35.337796242994955,
+                "start": 1795536932.9919817,
+                "stop": 1795536968.327089,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::TestBasalt::test_writes_confined",
+                "status": "passed",
+                "duration": 0.0011225199996260926,
+                "start": 1795536968.3276074,
+                "stop": 1795536968.3290675,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::TestBasalt::test_fix_rate",
+                "status": "passed",
+                "duration": 0.0007618800009367988,
+                "start": 1795536968.3295832,
+                "stop": 1795536968.3306978,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::TestBasalt::test_fixed_integrity",
+                "status": "passed",
+                "duration": 0.0007649800027138554,
+                "start": 1795536968.3310235,
+                "stop": 1795536968.3322413,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::TestBasalt::test_fixed_precision",
+                "status": "passed",
+                "duration": 0.0008199860021704808,
+                "start": 1795536968.3327925,
+                "stop": 1795536968.3338711,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::TestBasalt::test_overall_accuracy",
+                "status": "passed",
+                "duration": 0.0013046370004303753,
+                "start": 1795536968.334361,
+                "stop": 1795536968.3360555,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::TestCedar::test_solution_format",
+                "status": "passed",
+                "duration": 26.611054499000602,
+                "start": 1795536968.336673,
+                "stop": 1795536994.9460568,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::TestCedar::test_writes_confined",
+                "status": "passed",
+                "duration": 0.002537845000915695,
+                "start": 1795536994.947167,
+                "stop": 1795536994.9504995,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::TestCedar::test_fix_rate",
+                "status": "passed",
+                "duration": 0.0011489109965623356,
+                "start": 1795536994.9512868,
+                "stop": 1795536994.9529283,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::TestCedar::test_fixed_integrity",
+                "status": "passed",
+                "duration": 0.0005658540030708537,
+                "start": 1795536994.9533129,
+                "stop": 1795536994.954102,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::TestCedar::test_fixed_precision",
+                "status": "passed",
+                "duration": 0.000501149996125605,
+                "start": 1795536994.9543972,
+                "stop": 1795536994.9551175,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::TestCedar::test_overall_accuracy",
+                "status": "passed",
+                "duration": 0.0006432610025512986,
+                "start": 1795536994.955515,
+                "stop": 1795536994.956416,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::TestDune::test_solution_format",
+                "status": "passed",
+                "duration": 33.60155723500793,
+                "start": 1795536994.956726,
+                "stop": 1795537028.555759,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::TestDune::test_writes_confined",
+                "status": "passed",
+                "duration": 0.0011083300050813705,
+                "start": 1795537028.5562615,
+                "stop": 1795537028.5577648,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::TestDune::test_fix_rate",
+                "status": "passed",
+                "duration": 0.0009601130004739389,
+                "start": 1795537028.5582542,
+                "stop": 1795537028.5595574,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::TestDune::test_fixed_integrity",
+                "status": "passed",
+                "duration": 0.0009021059959195554,
+                "start": 1795537028.5600111,
+                "stop": 1795537028.5612812,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::TestDune::test_fixed_precision",
+                "status": "passed",
+                "duration": 0.0005685659925802611,
+                "start": 1795537028.561633,
+                "stop": 1795537028.5624328,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::TestDune::test_overall_accuracy",
+                "status": "passed",
+                "duration": 0.0006548770033987239,
+                "start": 1795537028.562738,
+                "stop": 1795537028.5635943,
+                "retries": 0,
+                "file_path": "test_state.py"
+            }
+        ]
+    }
+}

@@ -1,2 +1,3 @@
 exit status 3: read_truth=denied(PermissionError) list_tests=denied(PermissionError) read_reward_dir=denied(PermissionError) write_reward=denied(PermissionError) write_input=denied(PermissionError) sibling_sandbox=denied(PermissionError) pytest_environ=denied(PermissionError) pytest_mem=denied(PermissionError) network=denied(OSError) setuid0=denied(PermissionError) patch_library=denied(PermissionError) cross_run_stash_visible=False leave_stash=denied(PermissionError)
+written-outside []
 reward-after 0

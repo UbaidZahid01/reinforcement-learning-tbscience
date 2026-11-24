@@ -23,9 +23,16 @@ Physics simulated (truth model):
   * phase ambiguities: random integers + fractional receiver/satellite phase
     biases (cancel in double differences);
   * rover events: per-satellite short blockages (re-acquired with LLI set),
-    cycle slips on one or both frequencies (some flagged with LLI, most not),
+    cycle slips on one or both frequencies (three flagged with LLI, six not),
     a complete outage (underpass) after which every arc restarts with LLI set;
-    a single silent slip on the base.
+    a single silent slip on the base. Every session contains an unflagged
+    9/7-cycle and an unflagged 77/60-cycle slip. Events are only scheduled on
+    satellites both receivers track continuously around the event, and the
+    generator asserts that every scheduled event was applied.
+
+Random streams: cfg["seed"] fixes the constellation (hence the geometry that the
+start times were chosen for); cfg["seed"] + EVENT_SEED_OFFSET drives everything
+else (trajectory, biases, noise, events).
 
 Usage: python3 generate_sessions.py --out <dir>
 Writes <dir>/<session>/{base.rnx,rover.rnx,nav.rnx,session.json,truth.csv}.
@@ -73,7 +80,7 @@ SESSIONS = [
          tid_period_s=1800.0, tid_az=30.0, dzwd=0.008,
          clk_drift=-2.2e-6, clk_init=-0.2e-3, outage=(540, 11)),
     dict(name="basalt", seed=3307, lat=-33.87, lon=151.21, h=45.0,
-         start=datetime(2026, 5, 13, 2, 15, 0), baseline_km=4.5, az0=300.0,
+         start=datetime(2026, 5, 13, 2, 15, 0), baseline_km=6.0, az0=300.0,
          vtec=35.0, grad=(2.4, 1.1), tid_amp=0.5, tid_lambda_km=160.0,
          tid_period_s=1200.0, tid_az=250.0, dzwd=0.005,
          clk_drift=2.9e-6, clk_init=0.7e-3, outage=(860, 7)),
@@ -90,6 +97,12 @@ SESSIONS = [
 ]
 DURATION_S = 1800
 INTERVAL_S = 1.0
+EVENT_SEED_OFFSET = 10000
+BASELINE_RANGE_KM = (5.0, 20.0)   # the rover stays inside this range all session
+SLIP_MIN_EL_DEG = 15.0            # slips hit satellites any reasonable mask keeps
+BLOCK_MIN_EL_DEG = 12.0
+EVENT_CLEAR_S = 30                # continuous tracking required on each side of an event
+EVENT_GAP_S = 120                 # spacing between two events on one satellite
 # scales the catalogue gradients/TID amplitudes to typical mid-latitude
 # daytime levels (about 1-3 ppm differential slant delay on L1)
 IONO_SCALE = 0.6
@@ -275,6 +288,17 @@ def trop_map(el):
 # rover trajectory
 # ----------------------------------------------------------------------------
 def make_trajectory(rng, cfg, base_ecef, t0):
+    """First drawn path whose base distance stays inside BASELINE_RANGE_KM."""
+    lo, hi = BASELINE_RANGE_KM
+    for _ in range(1000):
+        traj = draw_trajectory(rng, cfg, base_ecef, t0)
+        d = np.linalg.norm(traj(t0 + np.arange(-2, DURATION_S + 3)) - base_ecef, axis=1) / 1e3
+        if d.min() > lo and d.max() < hi:
+            return traj
+    raise RuntimeError("no trajectory inside the baseline range")
+
+
+def draw_trajectory(rng, cfg, base_ecef, t0):
     lat0, lon0, h0 = ecef2geod(base_ecef)
     rot = enu_rot(lat0, lon0)
     d = cfg["baseline_km"] * 1e3
@@ -407,6 +431,7 @@ def simulate_session(cfg, outdir):
     week, sow0 = gps_time(start)
     toe = (sow0 // 7200) * 7200 + 7200.0
     ephs = make_constellation(rng, week, toe)
+    rng = np.random.default_rng(cfg["seed"] + EVENT_SEED_OFFSET)
     sat_phase_bias = {prn: (rng.uniform(0, 1), rng.uniform(0, 1)) for prn in ephs}
 
     base = geod2ecef(cfg["lat"], cfg["lon"], cfg["h"])
@@ -431,17 +456,49 @@ def simulate_session(cfg, outdir):
     prns = sorted(ephs)
     out_t0, out_len = cfg["outage"]
     outage = set(range(out_t0, out_t0 + out_len))
+    # elevation (deg, the lower of the two receivers) of every satellite at every epoch
+    elev = np.zeros((DURATION_S, 33))
+    for k in range(DURATION_S):
+        t = sow0 + k
+        for prn in prns:
+            elev[k, prn] = min(math.degrees(az_el(p, geometry(ephs[prn], t, p)[1])[1]) for p in (base, traj(t)))
+    events = []  # (prn, first epoch, last epoch)
+
+    def pick(k, length, min_el):
+        """A satellite tracked continuously around epochs k..k+length-1, or None."""
+        lo, hi = k - EVENT_CLEAR_S, k + length + EVENT_CLEAR_S
+        if any(e in outage for e in range(lo, hi)):
+            return None
+        ok = [p for p in prns if elev[lo:hi, p].min() >= min_el
+              and all(q != p or hi + EVENT_GAP_S < a or b + EVENT_GAP_S < lo for q, a, b in events)]
+        return int(rng.choice(ok)) if ok else None
+
+    def schedule(length, min_el):
+        while True:
+            k = int(rng.integers(60, DURATION_S - 60 - length))
+            prn = pick(k, length, min_el)
+            if prn is not None:
+                events.append((prn, k, k + length - 1))
+                return prn, k
+
     blockages = []  # (prn, start, length)
     for _ in range(int(rng.integers(3, 6))):
-        blockages.append((int(rng.choice(prns)), int(rng.integers(60, DURATION_S - 60)), int(rng.integers(2, 6))))
-    slip_kinds = [(1, 0), (0, 1), (-2, 0), (0, 3), (1, 1), (-4, -4), (9, 7), (-9, -7),
-                  (77, 60), (5, 0), (0, -12), (20, -3), (-1, -1), (2, 2)]
+        ln = int(rng.integers(2, 6))
+        blockages.append((*schedule(ln, BLOCK_MIN_EL_DEG), ln))
+    # the two combinations the geometry-free test cannot see are in every session, unflagged
+    sgn = [int(rng.choice([-1, 1])) for _ in range(2)]
+    kinds = [(9 * sgn[0], 7 * sgn[0], False), (77 * sgn[1], 60 * sgn[1], False)]
+    slip_kinds = [(1, 0), (0, 1), (-2, 0), (0, 3), (1, 1), (-4, -4),
+                  (5, 0), (0, -12), (20, -3), (-1, -1), (2, 2)]
+    picks = rng.choice(len(slip_kinds), size=7, replace=False)
+    kinds += [(*slip_kinds[j], n < 3) for n, j in enumerate(picks)]
     slips = []  # (receiver, prn, epoch, dn1, dn2, flagged)
-    picks = rng.choice(len(slip_kinds), size=9, replace=False)
-    for j in picks:
-        slips.append(("rover", int(rng.choice(prns)), int(rng.integers(40, DURATION_S - 20)),
-                      slip_kinds[j][0], slip_kinds[j][1], bool(rng.uniform() < 0.3)))
-    slips.append(("base", int(rng.choice(prns)), int(rng.integers(200, DURATION_S - 200)), 1, 1, False))
+    for d1, d2, flagged in kinds:
+        prn, k = schedule(1, SLIP_MIN_EL_DEG)
+        slips.append(("rover", prn, k, d1, d2, flagged))
+    prn, k = schedule(1, SLIP_MIN_EL_DEG)
+    slips.append(("base", prn, k, 1, 1, False))
+    applied = set()
 
     epochs_out = {"base": [], "rover": []}
     truth_rows = []
@@ -505,6 +562,8 @@ def simulate_session(cfg, outdir):
                     r.new_arc(prn, p1, p2, flag=(prn in r.amb or k > 0))
                 for (who, sprn, sk, d1, d2, flagged) in slips:
                     if who == kind and sprn == prn and sk == k:
+                        assert not gap
+                        applied.add((who, sprn, sk))
                         r.amb[prn][0] += d1
                         r.amb[prn][1] += d2
                         if flagged:
@@ -529,6 +588,7 @@ def simulate_session(cfg, outdir):
             prev_visible[kind] = visible
             epochs_out[kind].append((cal_t, sats))
 
+    assert len(applied) == len(slips) == 10
     os.makedirs(outdir, exist_ok=True)
     t_first = (start.year, start.month, start.day, start.hour, start.minute, float(start.second))
     write_obs(os.path.join(outdir, "base.rnx"), "BASE", np.round(base, 0), "GEODETIC RCV A",
@@ -545,9 +605,9 @@ def simulate_session(cfg, outdir):
         fh.write("gps_week,tow,x,y,z\n")
         for w, t, x, y, z in truth_rows:
             fh.write(f"{w},{t:.3f},{x:.4f},{y:.4f},{z:.4f}\n")
+    dist = [float(np.linalg.norm(np.array(r[2:]) - base) / 1e3) for r in truth_rows]
     meta = dict(name=cfg["name"], n_rover_epochs=len(truth_rows),
-                baseline_start_km=float(np.linalg.norm(traj(sow0) - base) / 1e3),
-                baseline_max_km=float(max(np.linalg.norm(traj(sow0 + k) - base) for k in range(0, DURATION_S, 10)) / 1e3),
+                baseline_min_km=round(min(dist), 3), baseline_max_km=round(max(dist), 3),
                 slips=[list(s) for s in slips], blockages=blockages, outage=list(cfg["outage"]))
     return meta
 

@@ -3,7 +3,8 @@
 
 Runs the submitted /root/results/solver.py on every hidden dataset as an
 unprivileged user in a private sandbox holding only file_a.csv and file_b.csv,
-then grades estimates and intervals against the generating coefficients.
+whose output directory is the only place it may write, then grades estimates
+and intervals against the generating coefficients.
 """
 from __future__ import annotations
 
@@ -28,7 +29,7 @@ SOLVER = Path("/root/results/solver.py")
 DATA = Path("/tests/datasets")
 TIME_LIMIT_S = 180
 WORKERS = 4
-BASE_UID = 20001                 # one uid per worker: concurrent runs cannot see each other
+BASE_UID = 20001                 # one uid per worker (concurrent runs cannot see each other); they own nothing in the image
 MAX_OUTPUT_BYTES = 20_000
 HEADER = ["term", "estimate", "ci_low", "ci_high"]
 TERMS = ["intercept", "x1", "x2", "x3"]
@@ -58,18 +59,34 @@ def _kill_uid(uid):
             return
 
 
+def _filesystem():
+    """Every path in the container outside /proc and /sys."""
+    for root, dirs, files in os.walk("/"):
+        dirs[:] = [d for d in dirs if os.path.join(root, d) not in ("/proc", "/sys")]
+        yield from (os.path.join(root, n) for n in dirs + files)
+
+
 def _close_shared_places():
     """Leave submissions no writable place but their own output directory (called before any of them runs)."""
-    for root, dirs, _ in os.walk("/"):
-        dirs[:] = [d for d in dirs if os.path.join(root, d) not in ("/proc", "/sys")]
-        for d in dirs:
-            q = os.path.join(root, d)
-            try:
-                mode = os.lstat(q).st_mode
-                if stat.S_ISDIR(mode) and mode & 0o002:
-                    os.chmod(q, 0o755)
-            except OSError:
-                pass
+    for q in _filesystem():
+        try:
+            mode = os.lstat(q).st_mode
+            if (stat.S_ISDIR(mode) or stat.S_ISREG(mode)) and mode & 0o002:
+                os.chmod(q, stat.S_IMODE(mode) & ~0o002)
+        except OSError:
+            pass
+
+
+def _owned_by(uids):
+    """Every path owned by one of uids."""
+    found = []
+    for q in _filesystem():
+        try:
+            if os.lstat(q).st_uid in uids:
+                found.append(q)
+        except OSError:
+            pass
+    return found
 
 
 def _purge_ipc(uid):
@@ -152,8 +169,11 @@ def run_one(name, uid):
 
 
 @lru_cache(maxsize=None)
-def results():
-    """Run the solver once on every hidden dataset, in random order; stop at the first invalid output."""
+def run_all():
+    """Run the solver once on every hidden dataset, in random order; stop at the first invalid output.
+
+    Returns ({dataset: (array | None, message)}, paths written outside the output directories).
+    """
     names = sorted(p.name for p in DATA.iterdir() if p.is_dir())
     random.SystemRandom().shuffle(names)
     _close_shared_places()
@@ -175,7 +195,14 @@ def results():
             uids.put(uid)
 
     with ThreadPoolExecutor(WORKERS) as ex:
-        return dict(zip(names, ex.map(work, names)))
+        res = dict(zip(names, ex.map(work, names)))
+    # every output directory is gone, so anything the runs still own was written elsewhere
+    return res, _owned_by(range(BASE_UID, BASE_UID + WORKERS))
+
+
+def results():
+    """{dataset: (array | None, message)} of the runs."""
+    return run_all()[0]
 
 
 def score(values, truth, group):
@@ -207,6 +234,13 @@ def graded(group):
 def test_outputs_valid():
     """Every dataset yields, in time, an estimates.csv with the documented schema and ordered finite intervals."""
     _require_valid()
+
+
+def test_writes_confined():
+    """Every run succeeds and none leaves a file or directory anywhere outside its output directory."""
+    _require_valid()
+    outside = run_all()[1]
+    assert not outside, f"written outside OUTPUT_DIR: {outside[:5]}"
 
 
 @pytest.mark.parametrize("group", GROUPS)

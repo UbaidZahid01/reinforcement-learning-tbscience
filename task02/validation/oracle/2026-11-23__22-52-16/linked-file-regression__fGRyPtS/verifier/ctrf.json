@@ -1,0 +1,65 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 4,
+            "passed": 4,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1795465671.3783333,
+            "stop": 1795466854.5503182
+        },
+        "tests": [
+            {
+                "name": "test_state.py::test_outputs_valid",
+                "status": "passed",
+                "duration": 1182.9481980960009,
+                "start": 1795465671.7065315,
+                "stop": 1795466854.5119066,
+                "retries": 0,
+                "file_path": "test_state.py"
+            },
+            {
+                "name": "test_state.py::test_accuracy",
+                "status": "passed",
+                "duration": 0.006813907999458024,
+                "start": 1795466854.513205,
+                "stop": 1795466854.5205045,
+                "retries": 3,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::group::[0, 1, 2, 3]"
+                ]
+            },
+            {
+                "name": "test_state.py::test_coverage",
+                "status": "passed",
+                "duration": 0.0008613020036136732,
+                "start": 1795466854.5341153,
+                "stop": 1795466854.5352726,
+                "retries": 3,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::group::[0, 1, 2, 3]"
+                ]
+            },
+            {
+                "name": "test_state.py::test_width",
+                "status": "passed",
+                "duration": 0.0008136959986586589,
+                "start": 1795466854.5401096,
+                "stop": 1795466854.5412593,
+                "retries": 3,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::group::[0, 1, 2, 3]"
+                ]
+            }
+        ]
+    }
+}

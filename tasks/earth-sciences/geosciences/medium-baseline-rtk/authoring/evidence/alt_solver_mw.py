@@ -2,15 +2,19 @@
 """Second comparator for threshold calibration (author-side only).
 
 Differs from solution/solver.py in three structural choices:
-  * cycle-slip detection from Melbourne-Wuebbena and geometry-free jumps
-    (no Doppler prediction, no receiver-clock bookkeeping);
+  * cycle-slip detection from Melbourne-Wuebbena jumps, geometry-free jumps and
+    the epoch-to-epoch phase differences themselves: displacement and clock are
+    solved from all satellites and outliers are excluded one at a time (no
+    Doppler prediction, no receiver-clock bookkeeping);
   * ionosphere parameterised as independent per-satellite single-difference
     delays only (the common vertical-differential state is disabled);
   * wide-lane ambiguities fixed by rounding arc-averaged double-difference
     Melbourne-Wuebbena values (no LAMBDA search on the wide-lane).
 It reuses the reference solver's RINEX/orbit code and EKF scaffolding.
 
-python3 alt_solver_mw.py --input-dir SESSION --output-dir OUT
+python3 alt_solver_mw.py --input-dir SESSION --output-dir OUT [--mw-gf-only]
+--mw-gf-only drops the phase-difference test: a defective variant that misses
+the 9/7-cycle slips, kept as an ablation.
 """
 from __future__ import annotations
 
@@ -29,8 +33,10 @@ LWL = ref.C / (ref.F1 - ref.F2)
 
 
 class MWRTK(ref.RTK):
-    def __init__(self, base, ephs):
+    def __init__(self, base, ephs, mw_gf_only=False):
         super().__init__(base, ephs)
+        self.mw_gf_only = mw_gf_only
+        self.td = {"r": {}, "b": {}}   # receiver -> prn -> (t, satellite position, L1, L2 phase in m)
         self.mw = {"r": {}, "b": {}}   # receiver -> prn -> [n, mean, M2]
         self.gf = {"r": {}, "b": {}}
 
@@ -39,15 +45,57 @@ class MWRTK(ref.RTK):
         return ((f1 * o["L1C"][0] * ref.LAM[1] - f2 * o["L2W"][0] * ref.LAM[2]) / (f1 - f2)
                 - (f1 * o["C1C"][0] + f2 * o["C2W"][0]) / (f1 + f2)) / LWL
 
+    def td_slips(self, key, t, sats, prns, els):
+        """Satellites whose phase change disagrees with the displacement and clock
+        change that all the other satellites agree on."""
+        x = self.base if key == "b" or self.rover_last is None else self.rover_last
+        cur, ids, H, sig = {}, [], [], []
+        rows = {1: [], 2: []}
+        for prn in prns:
+            o = sats[prn]
+            s, _ = ref.sat_at_tx(ref.select_eph(self.ephs, prn, t), t, o["C1C"][0])
+            cur[prn] = (t, s, ref.LAM[1] * o["L1C"][0], ref.LAM[2] * o["L2W"][0])
+            p = self.td[key].get(prn)
+            if p is None or t - p[0] > 1.5:
+                continue
+            now, old = ref.rot_sagnac(s, x) - x, ref.rot_sagnac(p[1], x) - x
+            drho = np.linalg.norm(now) - np.linalg.norm(old)
+            e = now / np.linalg.norm(now)
+            ids.append(prn)
+            H.append([1.0] if key == "b" else [-e[0], -e[1], -e[2], 1.0])
+            sig.append(0.003 + 0.003 / max(math.sin(els[prn]), 0.1))
+            for f in (1, 2):
+                rows[f].append(cur[prn][1 + f] - p[1 + f] - drho)
+        self.td[key] = cur
+        bad = set()
+        for f in (1, 2):
+            keep = list(range(len(ids)))
+            while True:
+                if len(keep) < (2 if key == "b" else 5):
+                    bad |= set(ids)      # not enough satellites left to tell which one slipped
+                    break
+                A = np.array([H[i] for i in keep]) / np.array([sig[i] for i in keep])[:, None]
+                y = np.array([rows[f][i] / sig[i] for i in keep])
+                r = y - A @ np.linalg.lstsq(A, y, rcond=None)[0]
+                if np.abs(r).max() < 5.0:
+                    break
+                sub = []
+                for j in range(len(keep)):
+                    m = np.arange(len(keep)) != j
+                    rr = y[m] - A[m] @ np.linalg.lstsq(A[m], y[m], rcond=None)[0]
+                    sub.append(rr @ rr)
+                bad.add(ids[keep.pop(int(np.argmin(sub)))])
+        return bad
+
     def detect_slips(self, key, t, sats, common_prns, clk, els):
-        slipped = set()
+        slipped = set() if self.mw_gf_only else self.td_slips(key, t, sats, common_prns, els)
         for prn in common_prns:
             o = sats[prn]
             mw = self._mw(o)
             gf = ref.LAM[1] * o["L1C"][0] - ref.LAM[2] * o["L2W"][0]
             st = self.mw[key].get(prn)
             pg = self.gf[key].get(prn)
-            bad = bool((o["L1C"][1] | o["L2W"][1]) & 1) or st is None or pg is None or t - pg[0] > 1.5
+            bad = prn in slipped or bool((o["L1C"][1] | o["L2W"][1]) & 1) or st is None or pg is None or t - pg[0] > 1.5
             if not bad:
                 n, mean, m2 = st
                 sd = math.sqrt(m2 / (n - 1)) if n > 2 else 1.0
@@ -103,13 +151,13 @@ class MWRTK(ref.RTK):
             self.wl_held.add(ref_prn)
 
 
-def run(inp, out):
+def run(inp, out, mw_gf_only=False):
     base = json.load(open(os.path.join(inp, "session.json")))["base_position_ecef_m"]
     ephs = ref.parse_nav(os.path.join(inp, "nav.rnx"))
     rov, _ = ref.parse_obs(os.path.join(inp, "rover.rnx"))
     bas, _ = ref.parse_obs(os.path.join(inp, "base.rnx"))
     bb = {round(t, 3): s for _, t, s in bas}
-    rtk = MWRTK(base, ephs)
+    rtk = MWRTK(base, ephs, mw_gf_only)
     os.makedirs(out, exist_ok=True)
     with open(os.path.join(out, "solution.csv"), "w", newline="\n") as fh:
         fh.write("gps_week,tow,x,y,z,status\n")
@@ -126,5 +174,6 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--input-dir", required=True)
     ap.add_argument("--output-dir", required=True)
+    ap.add_argument("--mw-gf-only", action="store_true")
     a = ap.parse_args()
-    run(a.input_dir, a.output_dir)
+    run(a.input_dir, a.output_dir, a.mw_gf_only)

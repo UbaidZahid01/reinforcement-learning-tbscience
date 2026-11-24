@@ -1,0 +1,89 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 5,
+            "passed": 0,
+            "failed": 5,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1795515887.0796473,
+            "stop": 1795515889.3552053
+        },
+        "tests": [
+            {
+                "name": "test_state.py::test_outputs_valid",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 1.4845258179993834,
+                "start": 1795515887.6045842,
+                "stop": 1795515889.1249232,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "def test_outputs_valid():\n        \"\"\"Every dataset yields, in time, an estimates.csv with the documented schema and ordered finite intervals.\"\"\"\n>       _require_valid()\n\ntest_state.py:236: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\n    def _require_valid():\n        bad = [m for v, m in results().values() if v is None]\n>       assert not bad, f\"{len(bad)} datasets without valid output, e.g. {bad[0]}\"\nE       AssertionError: 120 datasets without valid output, e.g. /root/results/solver.py missing or not a regular file\nE       assert not ['/root/results/solver.py missing or not a regular file', '/root/results/solver.py missing or not a regular file', 'no... not a regular file', 'not run; an earlier dataset failed: /root/results/solver.py missing or not a regular file', ...]\n\ntest_state.py:223: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_state.py::test_writes_confined",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.000741252995794639,
+                "start": 1795515889.1252697,
+                "stop": 1795515889.138835,
+                "retries": 0,
+                "file_path": "test_state.py",
+                "trace": "def test_writes_confined():\n        \"\"\"Every run succeeds and none leaves a file or directory anywhere outside its output directory.\"\"\"\n>       _require_valid()\n\ntest_state.py:241: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\n    def _require_valid():\n        bad = [m for v, m in results().values() if v is None]\n>       assert not bad, f\"{len(bad)} datasets without valid output, e.g. {bad[0]}\"\nE       AssertionError: 120 datasets without valid output, e.g. /root/results/solver.py missing or not a regular file\nE       assert not ['/root/results/solver.py missing or not a regular file', '/root/results/solver.py missing or not a regular file', 'no... not a regular file', 'not run; an earlier dataset failed: /root/results/solver.py missing or not a regular file', ...]\n\ntest_state.py:223: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_state.py::test_accuracy",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0007982579918461852,
+                "start": 1795515889.139171,
+                "stop": 1795515889.1557662,
+                "retries": 3,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::group::[0, 1, 2, 3]"
+                ],
+                "trace": "group = 3\n\n    @pytest.mark.parametrize(\"group\", GROUPS)\n    def test_accuracy(group):\n        \"\"\"Coefficient RMSE in the group is at most the documented multiple of that of regression on the true links.\"\"\"\n>       assert graded(group)[\"rmse\"] <= MAX_RMSE_RATIO\n               ^^^^^^^^^^^^^\n\ntest_state.py:249: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \ntest_state.py:228: in graded\n    _require_valid()\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\n    def _require_valid():\n        bad = [m for v, m in results().values() if v is None]\n>       assert not bad, f\"{len(bad)} datasets without valid output, e.g. {bad[0]}\"\nE       AssertionError: 120 datasets without valid output, e.g. /root/results/solver.py missing or not a regular file\nE       assert not ['/root/results/solver.py missing or not a regular file', '/root/results/solver.py missing or not a regular file', 'no... not a regular file', 'not run; an earlier dataset failed: /root/results/solver.py missing or not a regular file', ...]\n\ntest_state.py:223: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_state.py::test_coverage",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0007616540024173446,
+                "start": 1795515889.2110577,
+                "stop": 1795515889.2285695,
+                "retries": 3,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::group::[0, 1, 2, 3]"
+                ],
+                "trace": "group = 3\n\n    @pytest.mark.parametrize(\"group\", GROUPS)\n    def test_coverage(group):\n        \"\"\"Reported 95% intervals cover the true coefficients at least at the documented rate in the group.\"\"\"\n>       assert graded(group)[\"coverage\"] >= MIN_COVERAGE\n               ^^^^^^^^^^^^^\n\ntest_state.py:255: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \ntest_state.py:228: in graded\n    _require_valid()\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\n    def _require_valid():\n        bad = [m for v, m in results().values() if v is None]\n>       assert not bad, f\"{len(bad)} datasets without valid output, e.g. {bad[0]}\"\nE       AssertionError: 120 datasets without valid output, e.g. /root/results/solver.py missing or not a regular file\nE       assert not ['/root/results/solver.py missing or not a regular file', '/root/results/solver.py missing or not a regular file', 'no... not a regular file', 'not run; an earlier dataset failed: /root/results/solver.py missing or not a regular file', ...]\n\ntest_state.py:223: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_state.py::test_width",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0008691620023455471,
+                "start": 1795515889.2813103,
+                "stop": 1795515889.3028638,
+                "retries": 3,
+                "file_path": "test_state.py",
+                "tags": [
+                    "parametrize::group::[0, 1, 2, 3]"
+                ],
+                "trace": "group = 3\n\n    @pytest.mark.parametrize(\"group\", GROUPS)\n    def test_width(group):\n        \"\"\"Median interval width in the group is at most the documented multiple of that of regression on the true links.\"\"\"\n>       assert graded(group)[\"width\"] <= MAX_WIDTH_RATIO\n               ^^^^^^^^^^^^^\n\ntest_state.py:261: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \ntest_state.py:228: in graded\n    _require_valid()\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\n    def _require_valid():\n        bad = [m for v, m in results().values() if v is None]\n>       assert not bad, f\"{len(bad)} datasets without valid output, e.g. {bad[0]}\"\nE       AssertionError: 120 datasets without valid output, e.g. /root/results/solver.py missing or not a regular file\nE       assert not ['/root/results/solver.py missing or not a regular file', '/root/results/solver.py missing or not a regular file', 'no... not a regular file', 'not run; an earlier dataset failed: /root/results/solver.py missing or not a regular file', ...]\n\ntest_state.py:223: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

@@ -10,6 +10,20 @@ RUN pip install --no-cache-dir \
     pytest==8.4.1 \
     pytest-json-ctrf==0.3.5
 
+# ... and their own dependencies, so that both images stay identical over time.
+RUN pip install --no-cache-dir \
+    python-dateutil==4.0.0 \
+    pytz==2026.6 \
+    tzdata==2026.6
+
+# Submissions may import only the documented packages (and those packages' own
+# dependencies): everything else, i.e. pytest, its dependencies and pip, is root-only.
+RUN cd /usr/local/lib/python3.12/site-packages \
+    && find . -mindepth 1 -maxdepth 1 \
+       ! -name 'numpy*' ! -name 'scipy*' ! -name 'pandas*' ! -name '*dateutil*' \
+       ! -name 'pytz*' ! -name 'tzdata*' ! -name '__pycache__' \
+       -exec chmod -R go-rwx {} +
+
 RUN mkdir -p /root/results /logs/verifier
 COPY . /tests/
 
@@ -21,7 +35,7 @@ import lzma, pathlib;\
  for p in sorted(pathlib.Path('/tests/sessions').rglob('*.rnx.xz'))]" \
     && cd /tests && sha256sum -c /tests/input_checksums.sha256
 
-# pytest runs as root; the submitted solver is demoted to uid 65534 and can
+# pytest runs as root; the submitted solver is demoted to uid 20001 and can
 # read neither the verifier code, the thresholds, the true trajectories nor
 # the verdict.
 RUN chmod 700 /tests /logs/verifier
